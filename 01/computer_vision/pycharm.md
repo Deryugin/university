@@ -26,7 +26,7 @@ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libp
 
 cd /tmp
 git clone https://github.com/Itseez/opencv.git
-cd opencv
+cd opencv/cmake
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
 make
 sudo make install
