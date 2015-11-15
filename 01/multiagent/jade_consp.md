@@ -15,14 +15,17 @@
 ------------------------
 Запуск из консоли
 ``` Bash
-$ java jade.Boot -gui AgentName:examples.hello.HelloWorldAgent
+$ java jade.Boot -gui AgetnName:examples.hello.HelloWorldAgent
 ```
-
+### Netbeans
 Для того, чтобы можно было запускать приложение из NetBeans:
 * Правый клик по проекту в обозревателе проектов -> set configuration -> Customize
 * Пункт Run
 * В качестве Main class указать jade.Boot
 * В качестве Arguments указать -gui
+
+### Eclipse
+Инструкиця [тут] (https://wrjih.wordpress.com/2008/11/29/running-jade-under-eclipse/).
 
 Hello, World!
 ---------------------
