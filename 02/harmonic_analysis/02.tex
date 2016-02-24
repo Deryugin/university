@@ -1,0 +1,47 @@
+\documentclass[38pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Задание 2}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:}
+	\begin{enumerate}
+		\item {Доказать, что $\delta_{mn}(mj) = \delta_n(j), mn \in \mathbb{N}$}
+		\item {Доказать, что $\sum\limits_{p = 0}^{m - 1} \delta_{mn}(j - pn) = \delta_n(j)$}
+	\end{enumerate}
+
+	\textbf{Доказательство:}
+	\begin{enumerate}
+		\item По определению единичного периодичного импульса, $\delta_k(j) = 1 \Leftrightarrow j \;mod \;k = 0$.\\
+		
+			Следовательно,\\ $\delta_{mn}(mj) = 1 \Leftrightarrow mj \;mod \;mn = 0 \Leftrightarrow \exists p \in \mathbb{Z}: mnp = mj \Leftrightarrow \exists p \in \mathbb{Z}: np = j \Leftrightarrow $\\ $\Leftrightarrow j \;mod \;n = 0 \Leftrightarrow \delta_n(j) = 1$.\\
+			Более того, по определению единичного периодического импульса, $\delta_i(j) \neq 1 \Rightarrow \delta_i(j) = 0$, следовательно, $\delta_{mn}(mj) = \delta_n(j)$.
+
+	\begin{flushright}$\blacksquare$\end{flushright}
+	
+	\item Пусть $\exists k \in \mathbb{Z} : j = kn \Rightarrow \delta_n(j) = 1$.\\
+	По первой части данной задачи и по лемме 2:\\
+	$\sum\limits_{p = 0}^{m - 1} \delta_{mn}(j - pn) = \sum\limits_{p = 0}^{m - 1} \delta_{mn}(n(k - p)) = \sum\limits_{p = 0}^{m - 1} \delta_m(k - p) = \sum\limits_{p = 0}^{m - 1} \delta_m(p) = 1 = \delta_n(j).$\\
+	\\
+
+	Пусть $\nexists k \in \mathbb{Z} : j = kn \Rightarrow \delta_n(j) = 0$. Но если $j\;mod\;n \neq 0$, то $\forall p \in \mathbb{Z}\;j + np\;mod\;n \neq 0$, тем более, $(j + np)\;mod\;mn \neq 0$ а значит $\forall p \in \mathbb{Z} \;\delta_{mn}(j + np) = 0 \Rightarrow \sum\limits_{p = 0}^{m - 1} \delta_{mn}(j - pn) = 0 = \delta_n(j)$.
+
+	\begin{flushright}$\blacksquare$\end{flushright}
+	
+	\end{enumerate}
+	
+}
+\end{document}
