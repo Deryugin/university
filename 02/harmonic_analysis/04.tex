@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 4}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:} пусть $N = 2n, n \in \mathbb{N}$. Вещественному сигналу $x$ ($x: \mathbb{Z} \rightarrow \mathbb{R}$) сопоставлен комплексный сигнал $x_a$ со спектром:\\
+	\\
+
+	$X_a(k) = \left\{\begin{matrix}
+			X(k), & if\;k = 0\;or\;k = n \\ 
+			2X(k), & if\;k \in \left[1 : n - 1\right]\\
+			0, & otherwise
+		\end{matrix}\right.$\\
+	\\
+
+	Доказать, что $Re\;x_a = x$.\\
+	\\
+	\textbf{Доказательство:} По формуле обращения:\\
+	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N - 1} X(j) \omega_N^{kj}$;\\ \\ \\
+	$Im\;x(j) = 0$. (1) \\ \\ \\
+	$\left\{ sin \dfrac{2\pi k}{N}\right\}, {k \in \left [ 1 : n - 1 \right ]}$ --- ЛНЗ. Из (1) следует: \\$\forall j \in \left [ 1 : n \right ] : Im \Bigg [X(k) \omega_N^{kj} + X(N - k) \omega_N^{(N - k) j} \Bigg ] = 0 \Leftrightarrow Im \Bigg [ X(k) \omega_N^{kj} + X(N - k) \overline{\omega_N^{kj}} \Bigg ] = 0 \Leftrightarrow$\\ $\Leftrightarrow X(k) = X(N - k)$.\\
+
+	\proofend
+
+}
+\end{document}
