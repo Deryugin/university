@@ -1,0 +1,65 @@
+\documentclass[38pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Задание 1}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:} Доказать, что $\forall x \in \mathbb{C}_{N} \; \exists y, z : x = y + z$, где $y$ --- чётный сигнал, а $z$ --- нечётный (то есть, $\forall j \in \mathbb{Z} : y(-j) = \overline{y(j)}, z(-j) = -\overline{z(j)}$).
+
+\textbf{Доказательство:} Допустим, что такие сигналы существуют. Тогда $\forall j \in \mathbb{Z}$:\\
+
+$\left\{
+\begin{matrix}
+	x(j) & = y(j) + z(j); \\ 
+	\\
+	x(-j) & = \overline{y(j)} - \overline{z(j)};
+\end{matrix}
+\right.$\\
+\\
+
+$\left\{
+\begin{matrix}
+	x(j) & = y(j) + z(j); \\ 
+	\\
+	\overline{x(-j)} & = y(j) - z(j);
+\end{matrix}
+\right.$\\
+\\
+
+$\left\{
+\begin{matrix}
+	\dfrac{x(j) + \overline{x(-j)}}{2} = y(j); \\
+	\\
+	\dfrac{x(j) - \overline{x(-j)}}{2} = z(j);
+\end{matrix}
+\right.$\\
+\\
+
+Проверим чётность $y$:\\
+$y(-j) = \dfrac{x(-j) + \overline{x(j)}}{2} = \dfrac{\overline{\overline{x(-j)} + {x(j)}}}{2} = \overline{y(j)}.$\\
+\\
+
+Проверим нечётность $z$:\\
+$z(-j) = \dfrac{x(-j) - \overline{x(j)}}{2} = -\dfrac{\overline{{x(j)} - \overline{x(-j)}}}{2}= -\overline{z(j)}.$\\
+\\
+
+Проверим, что $x = y + z$:\\
+$y(j) + z(j) = \dfrac{x(j) + \overline{x(-j)}}{2} + \dfrac{x(j) - \overline{x(-j)}}{2} = x(j).$
+
+\raggedleft{}{$\blacksquare$}
+
+}
+\end{document}
