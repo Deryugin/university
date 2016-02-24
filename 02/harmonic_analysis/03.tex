@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 3}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:} пусть $X$ --- спектр Фурье сигнала $x$ (т.е. $X = \mathcal{F}_N(x)$).\\ Сопоставим ему сигнал $y$:\\
+	
+	$y(k) = \left\{\begin{matrix}
+			X(0), & if\;k = 0 \\ 
+			X(N - k), & otherwise 
+		\end{matrix}\right.$\\
+	\\
+
+	Доказать, что $x = \dfrac{1}{N} \mathcal{F}_N(y)$.\\
+	\\
+
+	\textbf{Доказательство:} По формуле обращения:\\
+	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N-1} X(k)\omega_N^{kj}$.\\
+	\\ \\
+	Помня, что $\omega_N^i$ --- N-периодическая функция, выполним преобразования:\\
+	$\mathcal{F}_N(y)(k) = \sum\limits_{j = 0}^{N - 1} y(j) \omega_N^{-kj} = y(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} y(j) \omega_N^{-kj} = X(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} X(N - j) \omega_N^{-kj} =\\ \\ \\= X(0) \omega_N^0 + \sum\limits_{p = 1}^{N - 1} X(p) \omega_N^{-k(N - p)} = \sum\limits_{p = 1}^{N - 1} X(p) \omega_N^{kp}$.\\ \\ \\
+	Следовательно,\\
+	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N - 1} X(k) \omega_N^{jk} = \dfrac{1}{N} \mathcal{F}_N(y)(j)$.
+	
+	\proofend
+
+}
+\end{document}
