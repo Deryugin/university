@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 5}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:} Доказать, что $\mathcal{F}_N^4(x) = N^2x$.\\
+	\\
+	\textbf{Доказательство:} \\
+	Из формулы обращения: $\sum\limits_{j = 0}^{N - 1} X(j)\omega_N^{jk} = Nx(k)$. \\ \\ \\
+
+	$\mathcal{F}_N^4(x)(j) = \sum\limits_{k = 0}^{N - 1} \mathcal{F}_N^3(x)(k)\omega_N^{-kj} = $ \\ \\
+	$ = \sum\limits_{k = 0}^{N - 1} \sum\limits_{l = 0}^{N - 1} \mathcal{F}_N^2(x)(l)\omega_N^{-kl}\omega_N^{-kj} = $ \\ \\
+	$ = \sum\limits_{k = 0}^{N - 1} \sum\limits_{l = 0}^{N - 1} \sum\limits_{m = 0}^{N - 1} \mathcal{F}_N(x)(m)\omega_N^{-ml}\omega_N^{-kl}\omega_N^{-kj} = $ \\ \\
+	$ = \sum\limits_{k = 0}^{N - 1} \sum\limits_{l = 0}^{N - 1} \sum\limits_{m = 0}^{N - 1} X(m)\omega_N^{-ml}\omega_N^{-kl}\omega_N^{-kj} = $ \\ \\
+	$ = \sum\limits_{k = 0}^{N - 1} \sum\limits_{l = 0}^{N - 1} Nx(-l)\omega_N^{-kl}\omega_N^{-kj} = $ \\ \\
+	$ = N\sum\limits_{k = 0}^{N - 1} X(-k)\omega_N^{-kj} = $
+	$ N^2x(j)$.
+
+	\proofend
+
+}
+\end{document}
