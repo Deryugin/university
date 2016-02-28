@@ -1,0 +1,52 @@
+\documentclass[38pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Список задач на 1 марта}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\large{
+
+\textbf{Задача 1:} Доказать, что $\forall x \in \mathbb{C}_{N} \; \exists y, z : x = y + z$, где $y$ --- чётный сигнал, а $z$ --- нечётный (то есть, $\forall j \in \mathbb{Z} : y(-j) = \overline{y(j)}, z(-j) = -\overline{z(j)}$). \\ \\
+
+\textbf{Задача 2:}
+	\begin{enumerate}
+		\item {Доказать, что $\delta_{mn}(mj) = \delta_n(j), mn \in \mathbb{N}$}
+		\item {Доказать, что $\sum\limits_{p = 0}^{m - 1} \delta_{mn}(j - pn) = \delta_n(j)$} \\ \\
+	\end{enumerate}
+
+
+\textbf{Задача 3:} пусть $X$ --- спектр Фурье сигнала $x$ (т.е. $X = \mathcal{F}_N(x)$). Сопоставим ему сигнал $y$:
+
+$y(k) = \left\{\begin{matrix}
+		X(0), & if\;k = 0 \\
+		X(N - k), & otherwise \\
+	\end{matrix}\right.$
+
+Доказать, что $x = \dfrac{1}{N} \mathcal{F}_N(y)$. \\ \\
+
+
+\textbf{Задача 4:} пусть $N = 2n, n \in \mathbb{N}$. Вещественному сигналу $x$ ($x: \mathbb{Z} \rightarrow \mathbb{R}$) сопоставлен комплексный сигнал $x_a$ со спектром:
+
+
+	$X_a(k) = \left\{\begin{matrix}
+			X(k), & if\;k = 0\;or\;k = n \\
+			2X(k), & if\;k \in \left[1 : n - 1\right] \\
+			0, & otherwise
+		\end{matrix}\right.$
+
+Доказать, что $Re\;x_a = x$. \\ \\
+
+
+\textbf{Задача 5:} Доказать, что для любого сигнала $x$ верно: $\mathcal{F}_N^4(x) = N^2x$.
+
+}
+
+\end{document}
