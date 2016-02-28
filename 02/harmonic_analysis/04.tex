@@ -21,7 +21,7 @@
 	\\
 
 	$X_a(k) = \left\{\begin{matrix}
-			X(k), & if\;k = 0\;or\;k = n \\ 
+			X(k), & if\;k = 0\;or\;k = n \\
 			2X(k), & if\;k \in \left[1 : n - 1\right]\\
 			0, & otherwise
 		\end{matrix}\right.$\\
@@ -29,10 +29,18 @@
 
 	Доказать, что $Re\;x_a = x$.\\
 	\\
-	\textbf{Доказательство:} По формуле обращения:\\
-	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N - 1} X(j) \omega_N^{kj}$;\\ \\ \\
-	$Im\;x(j) = 0$. (1) \\ \\ \\
-	$\left\{ sin \dfrac{2\pi k}{N}\right\}, {k \in \left [ 1 : n - 1 \right ]}$ --- ЛНЗ. Из (1) следует: \\$\forall j \in \left [ 1 : n \right ] : Im \Bigg [X(k) \omega_N^{kj} + X(N - k) \omega_N^{(N - k) j} \Bigg ] = 0 \Leftrightarrow Im \Bigg [ X(k) \omega_N^{kj} + X(N - k) \overline{\omega_N^{kj}} \Bigg ] = 0 \Leftrightarrow$\\ $\Leftrightarrow X(k) = X(N - k)$.\\
+	\textbf{Доказательство:} Докажем, что $Re(X(k)) = Re(X(-k))$:\\ \\
+
+	$Re(X(k)) - Re(X(-k)) = Re(\sum\limits_{j = 0}^{N - 1}x(j)\omega_N^{-kj}) - Re(\sum\limits_{j = 0}^{N - 1}x(j)\omega_N^{kj}) = $\\ \\
+	$= \sum\limits_{j = 0}^{N - 1} x(j) Re(\omega_N^{-kj}-\omega_N^{kj}) = \sum\limits_{j = 0}^{N - 1} x(j) \cdot 0 = 0$. \\ \\
+
+	По формуле обращения:\\
+	$x_a(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N - 1} X_a(j) \omega_N^{kj} = \dfrac{1}{N}\Bigg [ X(0)\omega_N^0 + X(\frac{N}{2})\omega_N^{\frac{N}{2}} + 2\sum\limits_{k = 1}^{\frac{N}{2} - 1} X(k) \omega_N^{kj} \Bigg ]$. \\ \\ \\
+
+	$Re(x_a(j)) = \dfrac{1}{N}\Bigg [ Re(X(0)\omega_N^0 + \sum\limits_{k = 0}^{\frac{N} - 1} X(k) \omega_N^{kj}) + Re (X(\frac{N}{2})\omega_N^{\frac{N}{2}} + \sum\limits_{k = 1}^{\frac{N}{2} - 1} X(k) \omega_N^{kj}) \Bigg ] = $ \\ \\
+	$= \dfrac{1}{N}\Bigg [ Re(\sum\limits_{k = 0}^{\frac{N}{2} - 1} X(k) \omega_N^{kj}) + Re (\sum\limits_{k = 1}^{\frac{N}{2}} X(k) \omega_N^{kj}) \Bigg ] =$(по чётности $Re(\omega_N^{kj})$ и $Re(X(k))$) $= $\\ \\
+	$ = \dfrac{1}{N}\Bigg [ Re(\sum\limits_{k = 0}^{\frac{N}{2} - 1} X(k) \omega_N^{kj}) + Re (\sum\limits_{k = -\frac{N}{2}}^{-1} X(k) \omega_N^{kj}) \Bigg ] = $ \\ \\
+	$ = \dfrac{1}{N}\Bigg [ Re(\sum\limits_{k = -\frac{N}{2}}^{\frac{N}{2} - 1} X(k) \omega_N^{kj}) \Bigg ] = \dfrac{1}{N}\Bigg [ Re(\sum\limits_{k = 0}^{N - 1} X(k) \omega_N^{kj}) \Bigg ] = Re(x(j)) = x(j)$.
 
 	\proofend
 
