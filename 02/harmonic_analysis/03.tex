@@ -32,7 +32,7 @@
 	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N-1} X(k)\omega_N^{kj}$.\\
 	\\ \\
 	Помня, что $\omega_N^i$ --- N-периодическая функция, выполним преобразования:\\
-	$\mathcal{F}_N(y)(k) = \sum\limits_{j = 0}^{N - 1} y(j) \omega_N^{-kj} = y(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} y(j) \omega_N^{-kj} = X(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} X(N - j) \omega_N^{-kj} =\\ \\ \\= X(0) \omega_N^0 + \sum\limits_{p = 1}^{N - 1} X(p) \omega_N^{-k(N - p)} = \sum\limits_{p = 1}^{N - 1} X(p) \omega_N^{kp}$.\\ \\ \\
+	$\mathcal{F}_N(y)(k) = \sum\limits_{j = 0}^{N - 1} y(j) \omega_N^{-kj} = y(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} y(j) \omega_N^{-kj} = X(0) \omega_N^0 + \sum\limits_{j = 1}^{N - 1} X(N - j) \omega_N^{-kj} =\\ \\ \\= X(0) \omega_N^0 + \sum\limits_{p = 1}^{N - 1} X(p) \omega_N^{-k(N - p)} = \sum\limits_{p = 0}^{N - 1} X(p) \omega_N^{kp}$.\\ \\ \\
 	Следовательно,\\
 	$x(j) = \dfrac{1}{N}\sum\limits_{k = 0}^{N - 1} X(k) \omega_N^{jk} = \dfrac{1}{N} \mathcal{F}_N(y)(j)$.
 	
