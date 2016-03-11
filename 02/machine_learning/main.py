@@ -54,7 +54,7 @@ flabels = open(train_labels_fname)
 images = fimages.read()
 labels = flabels.read()
 
-for i in range(0, test_num):
+for i in range(0, train_num):
     label = next_label(i)
 
     if label != 1 and label != 5:
