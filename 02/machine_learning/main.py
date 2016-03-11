@@ -168,7 +168,7 @@ def test_x(x):
             correct = correct + 1
 
     err_out = 1. * correct / total;
-    return (err_in, err_out)
+    return (1. - err_in, 1. - err_out)
 
 lim_list = [200, 2000, 20000]
 
