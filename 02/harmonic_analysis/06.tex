@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 6}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Условие:} Доказать: $x \in \mathbb{C}$ --- чётный $\Leftrightarrow X$ --- вещественный.\\
+	\\
+	\textbf{Доказательство:} \\
+	\textbf{Необходиомость:} $x$ --- чётный $\Rightarrow x(-k) = \overline{x}(k) \Rightarrow x(N - k) = \overline{x}(k)$.\\
+	$2X(j) = \sum\limits_{k = 0}^{N - 1} x(k) \omega_N^{-kj} + \sum\limits_{l = 1}^{N - 1} x(N - l) \omega_N^{-(N - l)j} = \sum\limits_{k = 0}^{N - 1} x(k) \omega_N^{-kj} + \sum\limits_{l = 1}^{N - 1} \overline{x}(l) \omega_N^{lj} = $\\
+	$= \sum\limits_{k = 1}^{N - 1} \bigg [ x(k) \omega_N^{-kj} + \overline{x(k) \omega_N^{-kj}} \bigg ] = \sum\limits_{k = 0}^{N - 1} 2Re(x(k) \omega_N^{-kj}) \in \mathbb{R}$.
+
+	\textbf{Достаточность:} $x(-k) = \dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} X(j) \omega_N^{-kj} = \dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} \overline{X(j) \omega_N^{kj}} = \overline{\dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} X(j) \omega_N^{kj}} = \overline{x(k)}$.
+
+	\proofend
+}
+\end{document}
