@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=1cm,right=1cm,
+	    top=1cm,bottom=1cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 7}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Решение:} \\
+	$\dfrac{1}{2} \big [ X(k) + \overline{X}(N - k) \big ] = \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} + \overline{\sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-(N - k)j}}\big ] = $\\
+	$= \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} + \sum\limits_{j = 0}^{N - 1} \overline{x(j)} \omega_N^{-kj}\big ] = \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} (x(j) + \overline{x(j)}) \omega_N^{-kj}\big ] =$\\
+	$= \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} (a(j) + ib(j) + a(j) - ib(j)) \omega_N^{-kj}\big ] = \sum\limits_{j = 0}^{N - 1} a(j) \omega_N^{-kj} = A(k)$.\\ \\ \\
+
+
+
+	$-\dfrac{1}{2} i\big [ X(k) - \overline{X}(N - k) \big ] = -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} - \overline{\sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-(N - k)j}}\big ] = $\\
+	$= -\dfrac{1}{2} i\big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} - \sum\limits_{j = 0}^{N - 1} \overline{x(j)} \omega_N^{-kj}\big ] = -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} (x(j) - \overline{x(j)}) \omega_N^{-kj}\big ] = $ \\
+	$= -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} (a(j) + ib(j) - a(j) + ib(j)) \omega_N^{-kj}\big ] = -i^2\sum\limits_{j = 0}^{N - 1} b(j) \omega_N^{-kj} = B(k)$.
+
+
+
+	\proofend
+}
+\end{document}
