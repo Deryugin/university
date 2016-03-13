@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=1cm,right=1cm,
+	    top=1cm,bottom=1cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 8}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	$x(j) = j, \;j = 0\;..\;N-1$.\\
+	\textbf{Поиск спектра:}\\
+
+	$X(k) = \sum\limits_{j = 0}^{N - 1} j \omega_N^{-kj}$.\\
+	Если $k = 0$, $X(k) = \dfrac{N(N-1)}{2}$.\\ \\
+
+	Если $k \in [1\;..\;N-1]$ : $\sum\limits_{j = 0}^{N - 1} (j + 1) \omega_N^{-kj} = X(k) + N\delta_N(k) = X(k)$.\\ \\
+	$X(k) = \sum\limits_{j = 0}^{N - 1} (j + 1) \omega_N^{-kj} = \omega_n^k\sum\limits_{l = 1}^N l\omega_N^{-kl} = \omega_N^k(X(k) + N)$.\\ \\
+	$X(k) (1 - \omega_N^k) = N \omega_N^k$. \\ \\
+	$X(k) = -\dfrac{N}{1 - \omega_N^{-k}} = -\dfrac{N}{1 - cos\frac{2k\pi}{N} + i sin\frac{2k\pi}{N}} = -\dfrac{N}{2sin^2\frac{k\pi}{N} + 2isin\frac{k\pi}{N}cos\frac{k\pi}{N}} = -\dfrac{N}{2isin\frac{k\pi}{N}(-isin\frac{k\pi}{N} + cos\frac{k\pi}{N})} = $\\
+	$ = -\dfrac{N(cos\frac{k\pi}{N} + isin\frac{k\pi}{N})}{2isin\frac{k\pi}{N}} = -\dfrac{N}{2}(1 - ictg\frac{k\pi}{N})$. \\ \\ \\
+
+
+	$X(k) = \left\{\begin{matrix}
+		\dfrac{N(N - 1)}{2}, & k = 0 \\
+		-\dfrac{N}{2}(1 - ictg\frac{k\pi}{N}), & k \in [1\;..\;N-1]
+	\end{matrix}\right.$ \\ \\
+
+
+	\textbf{Тригнометрическая формула:}\\
+
+	$\left \| x \right \|^2 = \sum\limits_{j = 0}^{N - 1} j^2 = \dfrac{(2N - 1)N(N - 1)}{6}$.\\ \\
+
+	$\left \| X \right \|^2 = \dfrac{1}{4}N(N-1) + \dfrac{1}{4}N^2\sum\limits_{j = 1}^{N - 1}(1 + ctg^2\dfrac{k\pi}{N}) = \dfrac{1}{4}N^2(N-1)^2 + \dfrac{1}{4}N^2\sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}.$ \\ \\
+
+	$\left \| x \right \|^2 = \dfrac{1}{N}\left \| X \right \|^2 $. \\
+
+	$4(2N - 1)N(N - 1) = 6N(N - 1)^2 + 6N\sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}$.
+
+	$\dfrac{N^2 - 1}{3} = \sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}$
+
+
+	\proofend
+
+
+}
+\end{document}
