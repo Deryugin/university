@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=1cm,right=1cm,
+	    top=1cm,bottom=1cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{Задание 11}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\textbf{Решение:} Пусть $x$ и $y$ --- чётные сигналы, а $u$ --- их циклическая свёртка.\\ \\
+
+	$u(-k) = \sum\limits_{j = 0}^{N - 1}x(j)y(-k - j) = \sum\limits_{l = 0}^{-N + 1} x(-l)y(-k + l) =
+	\sum\limits_{j = 0}^{N - 1}\overline{x}(N + l) \overline{y}(k + (N - l)) = $\\
+	$= \sum\limits_{s = 0}^{N - 1}\overline{x(q)y(k - q)} = \overline{u}(k)$.
+	\proofend
+}
+\end{document}
