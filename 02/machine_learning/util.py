@@ -1,11 +1,19 @@
 #!/bin/python2
 
+import numpy as np
+
 def resize(img, new_sz):
-    res= [0.0] * new_sz * new_sz
-    coef = 1. * new_sz / 28
-    for i in range(0, new_sz * (28 / new_sz)):
-        for j in range(0, new_sz * (28 / new_sz)):
-            res[new_sz * (i * new_sz / 28) + j * new_sz / 28] += 1. * img[i * 28 + j] * coef * coef
+    res = [0.0] * new_sz * new_sz
+    coef = (1. * new_sz / 28) * (1. * new_sz / 28)
+    t = new_sz * (28 / new_sz)
+    for i in range(0, t):
+        for j in range(0, t):
+            #print "#################"
+            #print i
+            #print j
+            #print t
+            #print len(img)
+            res[new_sz * (i * new_sz / 28) + j * new_sz / 28] += 1. * img[i * 28 + j] * coef
     return res
 
 labels_sig_sz = 8
@@ -68,8 +76,10 @@ def load_data():
 
         test_set.append((label, get_img(i, test_images)))
 
-def get_train_sample(sz):
-    np.random.choice(train_set, size = sz)
+def train_sample(sz):
+    np.random.shuffle(train_set)
+    return train_set[:sz][:]
 
-def get_test_sample(sz):
-    np.random.choice(test_set, size = sz)
+def test_sample(sz):
+    np.random.shuffle(test_set)
+    return test_set[:sz][:]

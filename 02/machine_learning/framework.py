@@ -15,25 +15,31 @@ util.load_data()
 
 print "Training sample size " + str(lim_list)
 
-train_lim = []
-
-get_x = lin_r.get_x
-test_x = lin_r.test_x
+get_x   = lin_r.get_x
+test_x  = lin_r.test_x
 
 for c_res in [4, 8, 16]:
     pr = []
     e_in = []
     e_out = []
 
-    img = resize(img, c_res)
+    for sz in lim_list:
+        t_set = util.train_sample(sz)
+        l = len(t_set)
+        for i in range(0, l):
+            t_set[i] = (t_set[i][0], util.resize(t_set[i][1], c_res))
+        x   = get_x(t_set)
+        e_i = test_x(x, t_set)
+        t_set = util.test_sample(sz)
+        l = len(t_set)
+        for i in range(0, l):
+            t_set[i] = (t_set[i][0], util.resize(t_set[i][1], c_res))
 
-    for train_lim in lim_list:
-        l = min(train_lim, len(lbl_train_set))
-        (e_i, e_o) = test_x(get_x())
+        e_o = test_x(x, t_set)
+
         e_in.append(e_i)
         e_out.append(e_o)
         pr.append(str(e_i) + "/" + str(e_o))
-
     t = np.array(lim_list)
     s = np.array(e_in)
     plt.plot(t, s)

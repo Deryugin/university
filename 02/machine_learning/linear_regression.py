@@ -17,12 +17,14 @@ def get_x(train_sample):
             y.append(-1.)
         else:
             y.append(1.)
+        img = img[:]
         img.append(1.)
         a.append(img)
 
     a = np.array(a)
+    aT = a.T
     y = np.array(y)
-    x = np.array([np.linalg.pinv(a.T.dot(a)).dot(a.T).dot(y)])
+    x = np.array([np.linalg.pinv(aT.dot(a)).dot(aT).dot(y)])
 
     return x
 
@@ -30,15 +32,15 @@ def test_x(x, test_sample):
     total = 0
     correct = 0
 
-    for i in range(0, len(test_sample)):
+    l = len(test_sample)
+    for i in range(0, l):
         label   = test_sample[i][0]
         img     = test_sample[i][1]
-
-        img.append(1)
+        img = img[:]
+        img.append(1.)
         img = np.array([img])
         res = x.dot(img.T)
-        total = total + 1
+
         if (label == 5 and res > 0) or (label == 1 and res < 0):
             correct = correct + 1
-
-    return 1. * correct / total;
+    return 1. - 1. * correct / l;
