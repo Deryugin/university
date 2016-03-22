@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\section*{Задача 9}
+
+	$X(k) = \sum\limits_{j=0}^{N-1}sin\dfrac{\pi j}{N}\omega_N^{-kj} = \sum\limits_{j=0}^{N-1}sin\dfrac{\pi j}{N}(cos\dfrac{2\pi k j}{N} - isin\dfrac{2\pi k j}{N}) = $\\
+	$= \sum\limits_{j=0}^{N-1} sin\dfrac{(2k+1)j\pi}{N} - cos\dfrac{\pi j}{N}sin\dfrac{2\pi k j}{N} + i\bigg (cos \dfrac{(2k+1)j\pi}{N} - cos\dfrac{\pi j}{N}cos\dfrac{2\pi k j}{N} \bigg ) =$ \\
+	$= \sum\limits_{j=0}^{N-1} i\omega_{2N}^{(2k+1)\pi j} - cos\dfrac{\pi j}{N} \bigg (sin \dfrac{2kj\pi}{N} +i sin \dfrac{2kj\pi}{N} \bigg) = \sum\limits_{j=0}^{N-1} i\omega_{2N}^{(2k+1)\pi j} - i\omega_{2N}^{(2k-1) \pi j} - sin\dfrac{\pi j}{N} \omega_{2N}^{-kj} \Rightarrow$ \\ \\ \\
+	$X(k) = \dfrac{1}{2i} \sum\limits_{j=0}^{N-1} \omega_{2N}^{(2k+1)\pi j} - \omega_{2N}^{(2k-1) \pi j} = ...$ (геометрическая прогрессия) \\
+	$... = \dfrac{1}{2i} \bigg ( \dfrac{1 - \omega_{2N}^{-(2k - 1)N}}{1 - \omega_{2N}^{-(2k-1)}} - \dfrac{1 - \omega_{2N}^{-(2k + 1)N}}{1 - \omega_{2N}^{-(2k+1)}} \bigg ) = \dfrac{1}{i} \bigg ( \dfrac{1}{1 - \omega_{2N}^{-(2k-1)}} - \dfrac{1}{1 - \omega_{2N}^{-(2k+1)}} \bigg ) =$\\
+	$= \dfrac{1}{i} \bigg ( \ctg \dfrac{(2k+1)\pi}{2N} - ctg\dfrac{(2k-1)\pi}{2N} \bigg )$
+	\proofend
+
+	\section*{Задача 10}
+	$m\sum\limits_{q=0}^{n-1}\delta_N(k - qm) = \left\{\begin{matrix}
+		0, & k\;mod\;m \neq 0 \\
+		m\sum\limits_{q=0}^{n-1}\delta_n(a-q), & k = ma, a \in \mathbb{Z}
+	\end{matrix}\right. = \left\{\begin{matrix}
+		0, & k\;mod\;m \neq 0 \\
+		m, & k = ma, a \in \mathbb{Z}
+	\end{matrix}\right. = m\delta_m(k)$.
+
+	$X(k) = \sum\limits_{j = 0}^{N - 1} \omega_N^{-kj} \sum\limits_{p=0}^{m-1}\delta_N(j - pn) = \sum\limits_{b=0}^{m-1} \omega_N^{-kbn} \sum\limits_{p=0}^{m-1}\delta_m(b - p) = \sum\limits_{b=0}^{m-1} \omega_m^{-kb} = m\delta_m(k)$.
+	\proofend
+	\pagebreak
+
+	\section*{Задача 12}
+	По теореам о циклической корреляции и о свёртке:\\
+	$\mathcal{F}_n(R_{uu}) = \mathcal{F}_n ( x \ast y ) \overline{\mathcal{F}_n(x \ast y)} = XY\overline{XY} = X\overline{X}Y\overline{Y} = \mathcal{F}_n(R_{xx})\mathcal{F}_n(R_{yy}) = \mathcal{F}_n(R_{xx} \ast R_{yy}) \Rightarrow$ \\
+	$\Rightarrow R_{uu} = R_{xx} \ast R_{yy}$
+	\proofend
+
+	\section*{Задача 13}
+	По равенству Парсеваля и теореме о циклической свёртке:\\
+	$\| R_{xy} \|^2 = \langle R_{xy}, R_{x,y}\rangle  = \dfrac{1}{N} \langle \mathcal{F}_n(R_{xy}), \mathcal{F}_n(R_{xy})\rangle  = \dfrac{1}{N} \langle X\overline{Y}, X\overline{Y}\rangle  = ...$ \\(по определнию скалярного произведения)\\$... = \dfrac{1}{N} \langle X\overline{X}, Y\overline{Y}\rangle  = \langle R_{xx}, R_{yy}\rangle $
+	\proofend
+
+	\section*{Задача 14}
+	Пусть $u = x \ast y$.\\
+	Из задачи 12: $R_{uu}(j) = (R_{xx} \ast R_{yy})(j) = \sum\limits_{k = 0}^{N - 1} R_{xx}(k) R_{yy}(j - k).$\\
+	$x, y$ --- $\delta$-коррелированные $\Rightarrow R_{xx}(j) = R_{yy}(j) = 0 \;\;\forall j \in [1 ... N - 1]$.\\ \\ \\
+	$R_{uu}(j) = R_{xx}(0) R_{yy}(j) = \left\{\begin{matrix}
+		0, & j \in [1..N-1] \\
+		R_{xx}(0)R_{yy}(0), & otherwise
+
+	\end{matrix}\right. \Rightarrow R_{uu} $ --- $\delta$-коррелированный.
+	\proofend
+
+	\section*{Задание 16}
+	Представим число $k = k_0 + 2k_1 + 2^2k_2 + ... + 2^sk_s$ в виде вектора $(k_0, k_1, ..., k_s)$.\\
+	Так как $k$ и $j < \dfrac{N}{2}$, $k_s = j_s = 0$.\\
+	$2k = 2k_0 + 2^2k_1 + ... + 2^sk_{s-1} = (0, k_0, ..., k_{s-1})$.\\
+	$2j = 2j_0 + 2^2j_1 + ... + 2^sj_{s-1} = (0, j_0, ..., j_{s-1})$.\\ \\
+	$\hat v_{2k}(j) = v_{rev(2k)}(j) = \{rev(2k), j\}_s = \{(k_{s-1}, ..., k_0, 0), (j_0, j_1, ..., j_{s-1}, 0)\} = \sum\limits_{p = 0}^{s-1}j_pk_{s-1-p}$.\\
+	$\hat v_{k}(2j) = v_{rev(k)}(2j) = \{rev(k), 2j\}_s = \{(0,k_{s-1}, ..., k_0), (0, j_0, j_1, ..., j_{s-1})\} = \sum\limits_{p = 0}^{s-1}j_pk_{s-1-p}$.\\
+	\proofend
+	\pagebreak
+
+	\section*{Задача 15}
+	Используем теорему: $A_k[k, j] = v_k(j)$.\\
+	\textbf{База индукции:} $k = 1, N = 2^k = 2$.
+	$A_1 = \bigl(\begin{smallmatrix}
+		1 & 1\\
+		1 & -1
+	\end{smallmatrix}\bigr)
+	$.\\
+	$v_0(2 - 1) = 1$.\\
+	$v_0(2 - 1 - 0) = 1 = v_0(0)$.\\
+	$v_0(2 - 1 - 1) = 1 = v_0(1)$.\\ \\
+	$v_1(2 - 1) = -1$.\\
+	$v_1(2 - 1 - 0) = -1 = v_1(0)$.\\
+	$v_1(2 - 1 - 1) = 1 = -v_1(1)$.\\ \\
+	\textbf{Индукционный переход:} Пусть для всех $k' < k$ утверждение верно, $N = 2^k$.\\
+	Рассмотрим $v_l$ такие, что $l < \dfrac{N}{2}$.\\
+	$v_l(a) = v_l(a + \dfrac{N}{2})$.\\ \\ \\
+	Если $j < \dfrac{N}{2}$, то $v_l(N - 1 - j) = v_l(\dfrac{N}{2} - 1 - j) = \left\{\begin{matrix}
+		v_l(j), & v_l(\dfrac{N}{2} - 1 - j) = 1 \\
+		-v_l(j), & v_l(\dfrac{N}{2} - 1 - j) = -1
+	\end{matrix}\right.$ \\ \\ по индукционному предположению.\\ \\ \\
+	Если $j >= \dfrac{N}{2}$, то $v_l(N - 1 - j) = v_l(N - 1 - j + \dfrac{N}{2}) = \left\{\begin{matrix}
+		v_l(j), & v_l(N - 1 - j) = 1 \\
+	-v_l(j), & v_l(N - 1 - j) = -1 \end{matrix} \right.$. \\ \\ по индукционному предположнию.\\ \\ \\
+	Пусть теперь $l >= \dfrac{N}{2}$, тогда $v_l(N - 1) = -v_l(\dfrac{N}{2} - 1)$.\\
+	Пусть $v_l(N - 1) = 1$. Тогда $v_l(\dfrac{N}{2} - 1) = -1$.\\
+	Если $j < \dfrac{N}{2}$, то $v_l(j) = -v_l(\dfrac{N}{2} - 1 - j) = v_l(\dfrac{N}{2} - 1 - j + \dfrac{N}{2}) = v_l(N - 1 - j)$.\\
+	Если $j \geq \dfrac{N}{2}$, то $v_l(j) = -v_l(j - \dfrac{N}{2}) = v_l(\dfrac{N}{2} - 1 - (j - \dfrac{N}{2})) = v_l(N - 1 - j)$. \\ \\
+	Пусть $v_l(N - 1) = -1$. Тогда $v_l(\dfrac{N}{2} - 1) = 1$.\\
+	Если $j < \dfrac{N}{2}$, то $v_l(j) = v_l(\dfrac{N}{2} - 1 - j) = -v_l(\dfrac{N}{2} - 1 - j + \dfrac{N}{2}) = -v_l(N - 1 - j)$.\\
+	Если $j \geq \dfrac{N}{2}$, то $v_l(j) = -v_l(j - \dfrac{N}{2}) = -v_l(\dfrac{N}{2} - 1 - (j - \dfrac{N}{2})) = -v_l(N - 1 - j)$. \\ \\
+	\proofend
+	\pagebreak
+
+
+\end{document}
