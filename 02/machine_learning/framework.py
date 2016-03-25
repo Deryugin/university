@@ -9,8 +9,7 @@ import logistic_regression as log_r
 import util
 import sys
 
-c_res = 4
-
+resolution_list = [4, 8, 16]
 lim_list = [200, 2000, 20000]
 
 if len(sys.argv) < 2:
@@ -30,8 +29,10 @@ else:
 util.load_data()
 
 print "Training sample size " + str(lim_list)
+res_ein     = []
+res_eout    = []
 
-for c_res in [4, 8, 16]:
+for c_res in resolution_list:
     pr = []
     e_in = []
     e_out = []
@@ -53,9 +54,14 @@ for c_res in [4, 8, 16]:
         e_in.append(e_i)
         e_out.append(e_o)
         pr.append(str(e_i) + "/" + str(e_o))
-    t = np.array(lim_list)
-    s = np.array(e_in)
-    plt.plot(t, s)
+
+    res_ein.append(np.array(e_in))
+    res_eout.append(np.array(e_out))
+
+    print str(c_res) + "x" + str(c_res) + ": " + str(pr)
+
+for i in range(0, len(t)):
+    plt.plot(np.array(lim_list), res_ein[i])
 
     plt.xlabel(str(c_res) + "x" + str(c_res))
     plt.ylabel('Err_In')
@@ -63,13 +69,10 @@ for c_res in [4, 8, 16]:
     plt.savefig("test.png")
     plt.show()
 
-    s = np.array(e_out)
-    plt.plot(t, s)
+    plt.plot(np.array(lim_list), res_eout[i])
 
     plt.xlabel(str(c_res) + "x" + str(c_res))
     plt.ylabel('Err_Out')
     plt.grid(True)
     plt.savefig("test.png")
     plt.show()
-
-    print str(c_res) + "x" + str(c_res) + ": " + str(pr)
