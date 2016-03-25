@@ -5,18 +5,31 @@ import cv
 import cv2
 import matplotlib.pyplot as plt
 import linear_regression as lin_r
+import logistic_regression as log_r
 import util
+import sys
 
 c_res = 4
 
 lim_list = [200, 2000, 20000]
 
+if len(sys.argv) < 2:
+    util.print_usage()
+    exit()
+
+if sys.argv[1] == "linear_regression":
+    get_x   = lin_r.get_x
+    test_x  = lin_r.test_x
+elif sys.argv[1] == "logistic_regression":
+    get_x   = log_r.get_x
+    test_x  = log_r.test_x
+else:
+    util.print_usage();
+    exit()
+
 util.load_data()
 
 print "Training sample size " + str(lim_list)
-
-get_x   = lin_r.get_x
-test_x  = lin_r.test_x
 
 for c_res in [4, 8, 16]:
     pr = []

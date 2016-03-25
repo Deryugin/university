@@ -1,6 +1,13 @@
 #!/bin/python2
 
 import numpy as np
+import sys
+
+def print_usage():
+    print "Usage: " + sys.argv[0] + " [method]"
+    print "Available methods:"
+    print "        linear_regression"
+    print "        logistic_regression"
 
 def resize(img, new_sz):
     res = [0.0] * new_sz * new_sz
@@ -8,11 +15,6 @@ def resize(img, new_sz):
     t = new_sz * (28 / new_sz)
     for i in range(0, t):
         for j in range(0, t):
-            #print "#################"
-            #print i
-            #print j
-            #print t
-            #print len(img)
             res[new_sz * (i * new_sz / 28) + j * new_sz / 28] += 1. * img[i * 28 + j] * coef
     return res
 
