@@ -34,7 +34,7 @@ def get_x(train_sample):
         img2np.append(np.array(img))
         up.append(y[i] * img2np[i])
 
-    for i in range(0, 10000):
+    for i in range(0, 1000):
         grad = np.array([0.] * img_sz)
 
         for j in range(0, N):

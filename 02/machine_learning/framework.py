@@ -10,7 +10,7 @@ import util
 import sys
 
 resolution_list = [4, 8, 16]
-lim_list = [200, 2000, 20000]
+lim_list = [200, 2000]#, 20000]
 
 if len(sys.argv) < 2:
     util.print_usage()
@@ -28,7 +28,6 @@ else:
 
 util.load_data()
 
-print "Training sample size " + str(lim_list)
 res_ein     = []
 res_eout    = []
 
@@ -36,8 +35,9 @@ for c_res in resolution_list:
     pr = []
     e_in = []
     e_out = []
-
+    print "Image resolution: " + str(c_res) + "x" + str(c_res)
     for sz in lim_list:
+        print "        Sample size: " + str(sz)
         t_set = util.train_sample(sz)
         l = len(t_set)
         for i in range(0, l):
@@ -59,6 +59,8 @@ for c_res in resolution_list:
     res_eout.append(np.array(e_out))
 
     print str(c_res) + "x" + str(c_res) + ": " + str(pr)
+
+exit()
 
 for i in range(0, len(t)):
     plt.plot(np.array(lim_list), res_ein[i])
