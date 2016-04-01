@@ -61,9 +61,8 @@ correct = 0
 slack = 0
 data = util.read_data(sys.argv[2])
 for i in data:
-    p_0 = 1. * c_cnt[0] / (c_cnt[0] + c_cnt[1])
-    p_1 = 1. * c_cnt[1] / (c_cnt[0] + c_cnt[1])
-
+    p = [1. * c_cnt[0] / (c_cnt[0] + c_cnt[1]),
+            1. * c_cnt[1] / (c_cnt[0] + c_cnt[1])]
     t = int(i[13])
     if t > 4:
         print "WTF"
@@ -71,49 +70,22 @@ for i in data:
     if t > 0:
         t = 1
 
-    for j in simple_l:
-        val = int(i[j])
-        if val == -9:
-            continue
-
-        if val < 0:
-            print "WTF"
-            exit()
-        sm = util.attr_sum[0][j];
-        if sm == 0:
-            continue
-        p_0 = p_0 * o_cnt[j][val][0] / sm
-
-        sm = util.attr_sum[1][j];
-        if sm == 0:
-            continue
-
-        p_1 = p_1 * o_cnt[j][val][1] / sm
-
-    for j in ranged_l:
-        if abs(float(i[j]) - 9.0) < 0.01:
+    for j in simple_l + ranged_l:
+        if abs(float(i[j]) + 9.0) < 0.01:
             continue
 
         val = util.categorize(float(i[j]), j)
 
-        sm = util.attr_sum[0][j];
-        if sm == 0:
-            continue
+        for k in [0, 1]:
+            sm = util.attr_sum[k][j];
+            if sm == 0:
+                p[k] = p[k] * 0.5
+            else:
+                p[k] = p[k] * o_cnt[j][val][k] / sm
 
-        p_0 = p_0 * o_cnt[j][val][0] / sm
-
-        sm = util.attr_sum[1][j];
-        if sm == 0:
-            continue
-
-        p_1 = p_1 * o_cnt[j][val][1] / sm
-
-    #print p_0
-    #print p_1
-    #print "##########"
-    if p_0 + p_1 < 0.0000000001:
+    if p[0] + p[1] < 0.0000000001:
         slack = slack + 1
-    if (t == 0 and p_0 > p_1) or (t > 0 and p_1 > p_0):
+    if (t == 0 and p[0] > p[1]) or (t > 0 and p[1] > p[0]):
         correct = correct + 1
 
     total = total + 1

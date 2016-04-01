@@ -16,9 +16,12 @@ o_cnt = []
 
 attr_sum = [[],[]]
 
-cat_max = 5
+cat_max = 15
 
 def categorize(x, cat):
+    if cat in simple_l:
+        return int(x)
+
     if x < mn[cat] or abs(mx[cat] - mn[cat]) < 0.0001:
         return 0
 
