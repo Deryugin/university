@@ -10,11 +10,11 @@ attr_n = util.attr_n
 #      Main part goes here      #
 #################################
 
-if len(sys.argv) != 2:
+if len(sys.argv) != 3:
     util.print_usage()
     exit()
 
-data = util.read_data()
+data = util.read_data(sys.argv[1])
 util.init(data)
 
 c_cnt    = util.c_cnt
@@ -49,6 +49,8 @@ for i in data:
 
 total = 0
 correct = 0
+
+data = util.read_data(sys.argv[2])
 
 for i in data:
     p_0 = 1. * c_cnt[0] / (c_cnt[0] + c_cnt[1])

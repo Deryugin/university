@@ -16,26 +16,14 @@ o_cnt = []
 
 attr_sum = [[],[]]
 
-cat_max = 1000
+cat_max = 5
 
 def categorize(x, cat):
-    if x < mn[cat]:
+    if x < mn[cat] or abs(mx[cat] - mn[cat]) < 0.0001:
         return 0
 
     if x > mx[cat]:
         return cat_max - 1
-
-    '''
-    step = 0
-    tmp = 1. * mn[cat]
-    while tmp < x:
-        step = step + 1
-        if step == cat_max - 1:
-            return step
-        tmp = tmp + (mx[cat] - mn[cat]) / cat_max
-
-    return step
-    '''
 
     return int((x - mn[cat] - 1/inf) / (mx[cat] - mn[cat]) * cat_max)
 
@@ -46,7 +34,7 @@ def init(data):
 
     for k in range(0, attr_n):
         o_cnt.append([])
-        for j in range(0, cat_max):
+        for j in range(0, max(100, cat_max)):
             o_cnt[k].append([0, 0])
             attr_sum[0].append(0)
             attr_sum[1].append(0)
@@ -60,10 +48,10 @@ def init(data):
                 mn[j] = val
 
 def print_usage():
-    print "USAGE: " + sys.argv[0] + " [DATA FILE]"
+    print "USAGE: " + sys.argv[0] + " [TRAIN_FILE TEST_FILE]"
 
-def read_data():
-    fdata = open(sys.argv[1])
+def read_data(fname):
+    fdata = open(fname)
 
     words = []
 
@@ -72,7 +60,7 @@ def read_data():
             words.append(word)
 
     res = []
-    fields_total = 90
+    fields_total = 76
 
     for i in range(0, len(words) / fields_total):
         tmp = []
