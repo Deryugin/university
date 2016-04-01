@@ -10,7 +10,7 @@ import util
 import sys
 
 resolution_list = [4, 8, 16]
-lim_list = [200, 2000]#, 20000]
+lim_list = [200, 2000, 20000]
 
 if len(sys.argv) < 2:
     util.print_usage()

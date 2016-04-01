@@ -21,6 +21,7 @@ def get_x(train_sample):
     img2np = []
     up = []
     w = np.array([0.5]*img_sz)
+    w_prev = np.array([0.5 * img_sz])
 
     for i in range(0, N):
         label = train_sample[i][0]
@@ -34,7 +35,8 @@ def get_x(train_sample):
         img2np.append(np.array(img))
         up.append(y[i] * img2np[i])
 
-    for i in range(0, 1000):
+    #steps = 0
+    for i in range(0, 2000):
         grad = np.array([0.] * img_sz)
 
         for j in range(0, N):
@@ -44,10 +46,15 @@ def get_x(train_sample):
                 grad += up[j] / down
 
         grad *= -1. / N
-        w -= 0.0003 * grad
+        tmp = w
+
+        w -= 0.0003 * grad - 0.0013 * (w - w_prev)
+        #steps = steps + 1
+        w_prev = tmp
+        #print np.linalg.norm(grad)
         if np.linalg.norm(grad) < 0.0001 * img_sz:
             break
-
+    #print steps
     return w
 
 def test_x(x, test_sample):
