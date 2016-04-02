@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+\large {
+\section*{Задача 22}
+$X_n(k) = \sum\limits_{j=0}^{nN - 1} x_n(j) \omega_{nN}^{-kj} =$
+$\sum\limits_{q=0}^{n-1}\sum\limits_{p=0}^{N-1} x(Nq + p)\omega_{nN}^{-k(Nq+p)} =$
+$\sum\limits_{p=0}^{N-1}\sum\limits_{q=0}^{n-1} x_n(Nq + p) \omega_{nN}^{-kp} \omega_{nN}^{-kNq}$.\\ \\
+Вспомним, что $x_n(j) = x(<j>_N) \Rightarrow x_n(Nq + p) = x(p)$, если $p \in [0..N-1]$.\\
+Также, $\omega_{nN}^{-kNq} = \omega_n^{-kq}$ по свойствам $\omega$.\\ \\
+$\sum\limits_{p=0}^{N-1}\sum\limits_{q=0}^{n-1} x_n(Nq + p) \omega_{nN}^{-kp} \omega_{nN}^{-kNq} =$
+$\sum\limits_{p=0}^{N-1}\sum\limits_{q=0}^{n-1}x(p)\omega_{nN}^{-kp} \omega_n^{-kq} =$
+$\sum\limits_{p=0}^{N-1}x(p)\omega_{nN}^{-kp} \sum\limits_{q=0}^{n-1}\omega_n^{-kq} = $
+$\sum\limits_{p=0}^{N-1}x(p)\omega_{nN}^{-kp} n\delta_n(k).$\\ \\
+Таким образом, $X_n(k) = n\delta_n(k) \sum\limits_{p=0}^{n-1}x(p)\omega_{nN}^{-kp}$.\\
+Если $\delta_n(k) = 0$, то $X_n(k) = 0$. В ином случае, $k = tn, t \in \mathbb{Z}$
+.\\ \\
+В этом случае $X_n(k) = n \sum\limits_{p=0}^{N-1}x(p)\omega_{nN}^{-tnp} = $
+$\sum\limits_{p = 0}^{N-1} x(p)\omega_{N}{-tp} = n X(t)$.\\ \\
+В итоге: $X_n(k) = \left\{\begin{matrix}
+0, & \delta_n(k) = 0 \\
+nX(k/n),  & \delta_n(k) = 1
+  \end{matrix}\right.$
+\proofend
+
+\section*{Задача 23}
+$X_n(k) = \sum\limits_{j=0}^{nN - 1} x_n(j) \omega_{nN}^{-kj} = $
+$\sum\limits_{j=0}^{nN-1}x(\lfloor j / n \rfloor) \omega_{nN}^{-kj} =$
+$\sum\limits_{p=0}^{N-1}\sum\limits_{q=0}^{n-1} x(\lfloor (np + q) / n \rfloor) \omega_{nN}^{-k(pn + q)} =$ \\
+$ = \sum\limits_{p=0}^{N-1}\sum\limits_{q=0}^{n-1}x(p)\omega_{nN}^{-k(pn + q)} =$
+$\sum\limits_{p=0}^{N-1} \sum\limits_{q=0}^{n-1}x(p)\omega_{nN}^{-kpn} \omega_{nN}^{-kq} =$
+$\sum\limits_{q=0}^{n-1} \sum\limits_{p=0}^{N-1} x(p) \omega_{nN}^{-kpn}\omega_{nN}^{-kq} =$\\
+$= \sum\limits_{q=0}^{n-1} \omega_{nN}^{-kq} \sum\limits_{p=0}^{N-1}x(p) \omega_N^{-kp} = \Bigg ( \sum\limits_{q=0}^{n-1}\omega_{nN}^{-kq} \Bigg ) X(k)$.
+\proofend
+\pagebreak
+
+\section*{Задача 24}
+Пусть $j \in [0..nN-1], j = qn + p; q, p \in \mathbb{N}$. Если $p \neq 0, <j>_n \neq 0 \Rightarrow x_n(j) = 0$.\\ \\
+$X_n(k) = \sum\limits_{j=0}^{nN - 1} x_n(j) \omega_{nN}^{-kj} = $
+$\sum\limits_{j = 0}^{nN - 1} x_n(j) \omega_{nN}^{-kj} = $
+$\sum\limits_{p = 0}^{N - 1} \sum\limits_{q=0}^{n-1} x_n(pn + q) \omega_{nN}^{-k(pn + q)} = $ \\
+$ = \sum\limits_{p = 0}^{N - 1} x_n(pn) \omega_{nN}^{-kpn} = $
+$\sum\limits_{p = 0}^{N - 1} x(p) \omega_{N}^{-kp} = X(k)$.
+\proofend
+
+\section*{Задача 25}
+$Y_n(k) = \sum\limits_{j=0}^{n-1}x(jm)\omega_n^{-kj} =$
+$\sum\limits_{j=0}^{n-1}\sum\limits_{l=0}^{m-1} \delta_m(jm + l) x(jm + l) \omega_{n}^{-kj}= $
+$\sum\limits_{j=0}^{n-1}\sum\limits_{l=0}^{m-1} \delta_m(jm + l) x(jm + l) \omega_{nm}^{-k(mj + l)}.$ \\ \\
+Учтём, что $\delta_m(w) = \dfrac{1}{m}\sum\limits_{q=0}^{m-1}\omega_m^{-qw}$. \\ \\
+$\sum\limits_{j=0}^{n-1}\sum\limits_{l=0}^{m-1} \delta_m(jm + l) x(jm + l) \omega_{nm}^{-k(mj + l)} = $
+$\sum\limits_{p=0}^{nm-1}\Bigg [ \dfrac{1}{m}\sum\limits_{q=0}^{m-1}\omega_m^{-pq}\Bigg ] x(p) \omega_{nm}^{-kp} =$
+$\sum\limits_{p=0}^{nm-1}\Bigg [ \dfrac{1}{m}\sum\limits_{q=0}^{m-1}\omega_{nm}^{-pq}\Bigg ] x(p) \omega_{nm}^{-kp} =$ \\
+$= \dfrac{1}{m} \sum\limits_{p=0}^{nm-1} \sum\limits_{q=0}^{m-1} x(p) \omega_{mn}^{-p(k + qn)} = $
+$ \dfrac{1}{m} \sum\limits_{q = 0}^{m-1} X(k + qn)$.\\
+\proofend
+
+\section*{Задача 26}
+Учтём, что $\delta_m(w) = \dfrac{1}{m}\sum\limits_{q=0}^{m-1}\omega_m^{-qw}$. \\ \\
+$Y_n(k) = \sum\limits_{j = 0}^{n-1} y_n(j) \omega_n^{-kj} =$
+$\sum\limits_{j=0}^{n-1} \Bigg [ \sum\limits_{p=0}^{m-1} x(j + pn) \Bigg ] \omega_{n}^{-kj} =$\\
+$= \sum\limits_{j=0}^{n-1} \sum\limits_{p=0}^{m-1} x(j + pn) \omega_{n}^{-k(j + pn)} =$
+$\sum\limits_{q=0}^{mn-1} x(q) \omega_{n}^{-kq} =$
+$\sum\limits_{q=0}^{mn-1} x(q) \omega_{nm}^{-kqm} = X(km).$
+\proofend
+}
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+\large{
+	\section*{Задача 17}
+
+	$\phi_\nu(N_\nu; \;j) = \sum\limits_{q=0}^{\Delta_{\nu+1}-1}(-1)^{\left \lfloor \frac{q}{\Delta_\nu}  \right \rfloor} \phi_0(q) = \sum\limits_{q=0}^{\Delta_{\nu+1}-1}(-1)^{\left \lfloor \frac{q}{\Delta_\nu}  \right \rfloor} \delta_N(j - q) = \left\{\begin{matrix}
+		(-1)^{\left \lfloor \frac{j}{\Delta_\nu}  \right \rfloor} \, & j \in [0: \Delta_{\nu + 1})\\
+		0, & otherwise
+	\end{matrix}\right. = ... $\\
+	Учитывая то, что $\left \lfloor \frac{j}{\Delta_\nu}  \right \rfloor \in [0..N_\nu)$\\
+	$... = (-1)^{\left \lfloor \frac{j}{\Delta_\nu}  \right \rfloor} \delta_{N_\nu}(\left \lfloor j/\Delta_{\nu + 1}  \right \rfloor)$
+	\proofend
+
+
+	\section*{Задача 18}
+	По предыдущей задаче:\\
+	$\widehat{\phi}_{\nu - 1}(j) = \delta_{N_{\nu-1}}(\lfloor j / \Delta_\nu \rfloor).$\\
+	Если $ \frac{N}{2} \leq j < N$, то $\lfloor j / \Delta_\nu \rfloor > 0 \Rightarrow \widehat{\phi}_{\nu - 1}(j) = 0$. \\ \\
+	Если $ 0 \leq j < \frac{N}{2}$, то $\delta_{N_{\nu-1}}(\lfloor j / \Delta_\nu \rfloor) = $\\ \\
+	$= \delta_{N_{\nu-1}}(\lfloor 2j / \Delta_{\nu+1} \rfloor) = ... (2j < N) ... = \delta_{N_{\nu}}(\lfloor 2j / \Delta_{\nu+1} \rfloor).$
+	\proofend
+
+	\pagebreak
+
+	\section*{Задача 19}
+	$\delta_N = 2^{-s} \phi_s(0) \xi_s(0) + \sum\limits_{\nu=1}^{s}2^{-\nu} \sum\limits_{p = 0}^{N_\nu - 1} \xi_\nu(p + N_\nu) \phi_\nu(p + N_\nu)$.\\ \\
+
+	$\begin{matrix}
+		&   & 0 & 1 & 2 &   &   & 2^{s-1} & 2^{s-1}+1 & & 2^s-1 & 2^s \\
+		\hline
+		\xi_0 & | & 1 & 0 & 0 & 0 & 0 & 0 & 0 & ... & 0 & 0\\
+		\xi_1 & | & 1 & 0 & 0 & 0 & 0 & 1 & 0 & ... & 0 & 0\\
+		... & ... \\
+		\xi_{s-1} & | & 1 & 0 & 1 & 0 & & & & & & \\
+		\xi_s & | & 1 & 1 & & & & & & & &\\
+		 &
+	\end{matrix}$\\ \\
+	Таким образом, $\xi_\nu(p + N\nu) = \delta_N(p)$.\\
+	$\delta_N = 2^{-s} + \sum\limits_{\nu=1}^{s}2^{-\nu} \phi_\nu(N_\nu)$
+	\proofend
+	\section*{Задача 21}
+	$N = 2n$\\
+	$X(k) = \sum\limits_{j=0}^{N-1}x(j)\omega_N^{-kj} = \sum\limits_{j=0}^{n-1}x(2j)\omega_N^{-k(2j)} + \sum\limits_{j=0}^{n-1}x(2j+1)\omega_N^{-k(2j+1)} = $\\
+	$= \sum\limits_{j=0}^{n-1}(x(2j)+\omega_N^{-k}x(2j+1))\omega_n^{-kj}$.\\ \\ \\
+	$X(n + k) = \sum\limits_{j=0}^{N-1}x(j)\omega_N^{-(n+k)j} = \sum\limits_{j=0}^{N-1}(-1)^jx(j)\omega_N^{-kj} = \sum\limits_{j=0}^{n-1}x(2j)\omega_N^{-k(2j)} - \sum\limits_{j=0}^{n-1}x(2j+1)\omega_N^{-k(2j+1)} = $\\
+	$= \sum\limits_{j=0}^{n-1}(x(2j)-\omega_N^{-k}x(2j+1))\omega_n^{-kj}$.
+	\proofend
+\end{document}

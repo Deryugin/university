@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\large{
+	\section*{Задача 6} ~\\
+
+
+	\textbf{Необходиомость:} $x$ --- чётный $\Rightarrow x(-k) = \overline{x}(k) \Rightarrow x(N - k) = \overline{x}(k)$.\\
+	$2X(j) = \sum\limits_{k = 0}^{N - 1} x(k) \omega_N^{-kj} + \sum\limits_{l = 1}^{N - 1} x(N - l) \omega_N^{-(N - l)j} = \sum\limits_{k = 0}^{N - 1} x(k) \omega_N^{-kj} + \sum\limits_{l = 1}^{N - 1} \overline{x}(l) \omega_N^{lj} = $\\
+	$= \sum\limits_{k = 1}^{N - 1} \bigg [ x(k) \omega_N^{-kj} + \overline{x(k) \omega_N^{-kj}} \bigg ] = \sum\limits_{k = 0}^{N - 1} 2Re(x(k) \omega_N^{-kj}) \in \mathbb{R}$.
+
+
+	\textbf{Достаточность:} $x(-k) = \dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} X(j) \omega_N^{-kj} = \dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} \overline{X(j) \omega_N^{kj}} = \overline{\dfrac{1}{N} \sum\limits_{j = 0}^{N - 1} X(j) \omega_N^{kj}} = \overline{x(k)}$.
+
+	\proofend
+
+
+
+
+
+
+\section*{Задача 7} ~\\
+	$\dfrac{1}{2} \big [ X(k) + \overline{X}(N - k) \big ] = \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} + \overline{\sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-(N - k)j}}\big ] = $\\
+	$= \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} + \sum\limits_{j = 0}^{N - 1} \overline{x(j)} \omega_N^{-kj}\big ] = \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} (x(j) + \overline{x(j)}) \omega_N^{-kj}\big ] =$\\
+	$= \dfrac{1}{2} \big [ \sum\limits_{j = 0}^{N - 1} (a(j) + ib(j) + a(j) - ib(j)) \omega_N^{-kj}\big ] = \sum\limits_{j = 0}^{N - 1} a(j) \omega_N^{-kj} = A(k)$.\\ \\ \\
+
+
+
+	$-\dfrac{1}{2} i\big [ X(k) - \overline{X}(N - k) \big ] = -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} - \overline{\sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-(N - k)j}}\big ] = $\\
+	$= -\dfrac{1}{2} i\big [ \sum\limits_{j = 0}^{N - 1} x(j) \omega_N^{-kj} - \sum\limits_{j = 0}^{N - 1} \overline{x(j)} \omega_N^{-kj}\big ] = -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} (x(j) - \overline{x(j)}) \omega_N^{-kj}\big ] = $ \\
+	$= -\dfrac{1}{2}i \big [ \sum\limits_{j = 0}^{N - 1} (a(j) + ib(j) - a(j) + ib(j)) \omega_N^{-kj}\big ] = -i^2\sum\limits_{j = 0}^{N - 1} b(j) \omega_N^{-kj} = B(k)$.
+
+
+
+	\proofend
+
+
+
+
+
+\pagebreak
+\section*{Задача 8} ~\\
+	$x(j) = j, \;j = 0\;..\;N-1$.\\
+	\textbf{Поиск спектра:}\\
+
+	$X(k) = \sum\limits_{j = 0}^{N - 1} j \omega_N^{-kj}$.\\
+	Если $k = 0$, $X(k) = \dfrac{N(N-1)}{2}$.\\ \\
+
+	Если $k \in [1\;..\;N-1]$ : $\sum\limits_{j = 0}^{N - 1} (j + 1) \omega_N^{-kj} = X(k) + N\delta_N(k) = X(k)$.\\ \\
+	$X(k) = \sum\limits_{j = 0}^{N - 1} (j + 1) \omega_N^{-kj} = \omega_n^k\sum\limits_{l = 1}^N l\omega_N^{-kl} = \omega_N^k(X(k) + N)$.\\ \\
+	$X(k) (1 - \omega_N^k) = N \omega_N^k$. \\ \\
+	$X(k) = -\dfrac{N}{1 - \omega_N^{-k}} = -\dfrac{N}{1 - cos\frac{2k\pi}{N} + i sin\frac{2k\pi}{N}} = -\dfrac{N}{2sin^2\frac{k\pi}{N} + 2isin\frac{k\pi}{N}cos\frac{k\pi}{N}} = -\dfrac{N}{2isin\frac{k\pi}{N}(-isin\frac{k\pi}{N} + cos\frac{k\pi}{N})} = $\\
+	$ = -\dfrac{N(cos\frac{k\pi}{N} + isin\frac{k\pi}{N})}{2isin\frac{k\pi}{N}} = -\dfrac{N}{2}(1 - ictg\frac{k\pi}{N})$. \\ \\ \\
+
+
+	$X(k) = \left\{\begin{matrix}
+		\dfrac{N(N - 1)}{2}, & k = 0 \\
+		-\dfrac{N}{2}(1 - ictg\frac{k\pi}{N}), & k \in [1\;..\;N-1]
+	\end{matrix}\right.$ \\ \\
+
+
+	\textbf{Тригнометрическая формула:}\\
+
+	$\left \| x \right \|^2 = \sum\limits_{j = 0}^{N - 1} j^2 = \dfrac{(2N - 1)N(N - 1)}{6}$.\\ \\
+
+	$\left \| X \right \|^2 = \dfrac{1}{4}N(N-1) + \dfrac{1}{4}N^2\sum\limits_{j = 1}^{N - 1}(1 + ctg^2\dfrac{k\pi}{N}) = \dfrac{1}{4}N^2(N-1)^2 + \dfrac{1}{4}N^2\sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}.$ \\ \\
+
+	$\left \| x \right \|^2 = \dfrac{1}{N}\left \| X \right \|^2 $. \\
+
+	$4(2N - 1)N(N - 1) = 6N(N - 1)^2 + 6N\sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}$.
+
+	$\dfrac{N^2 - 1}{3} = \sum\limits_{j = 1}^{N - 1}\dfrac{1}{sin^2\frac{k\pi}{N}}$
+
+	\proofend
+
+	\section*{Задача 11}
+	\textbf{Решение:} Пусть $x$ и $y$ --- чётные сигналы, а $u$ --- их циклическая свёртка.\\ \\
+
+	$u(-k) = \sum\limits_{j = 0}^{N - 1}x(j)y(-k - j) = \sum\limits_{l = 0}^{-N + 1} x(-l)y(-k + l) =
+	\sum\limits_{j = 0}^{N - 1}\overline{x}(N + l) \overline{y}(k + (N - l)) = $\\
+	$= \sum\limits_{s = 0}^{N - 1}\overline{x(q)y(k - q)} = \overline{u}(k)$.
+	\proofend
+
+\pagebreak
+
+}
+\end{document}
