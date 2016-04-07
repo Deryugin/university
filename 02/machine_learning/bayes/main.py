@@ -7,10 +7,6 @@ import numpy as np
 required_fields = util.required_fields
 attr_n = util.attr_n
 
-#################################
-#      Main part goes here      #
-#################################
-
 if len(sys.argv) != 3:
     util.print_usage()
     exit()
@@ -31,24 +27,13 @@ data = data[:100]
 for i in data:
     t = int(i[13])
     if t > 4:
-        print "WTF"
+        print "Error"
         exit()
     if t > 0:
         t = 1
 
-    for j in simple_l:
-        val = int(i[j])
-        if val == -9:
-            continue
-
-        if val < 0:
-            print "WTF"
-            exit()
-        util.attr_sum[t][j] = util.attr_sum[t][j] + 1
-        o_cnt[j][val][t] = o_cnt[j][val][t] + 1
-
-    for j in ranged_l:
-        if abs(float(i[j]) - 9.0) < 0.01:
+    for j in simple_l + ranged_l:
+        if abs(float(i[j]) + 9.0) < 0.01:
             continue
         cat = util.categorize(float(i[j]), j)
         util.attr_sum[t][j] = util.attr_sum[t][j] + 1
@@ -65,7 +50,7 @@ for i in data:
             1. * c_cnt[1] / (c_cnt[0] + c_cnt[1])]
     t = int(i[13])
     if t > 4:
-        print "WTF"
+        print "Error"
         exit()
     if t > 0:
         t = 1
