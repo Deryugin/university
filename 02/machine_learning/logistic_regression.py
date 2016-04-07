@@ -36,7 +36,7 @@ def get_x(train_sample):
         up.append(y[i] * img2np[i])
 
     #steps = 0
-    for i in range(0, 2000):
+    for i in range(0, 20000):
         grad = np.array([0.] * img_sz)
 
         for j in range(0, N):
@@ -48,7 +48,7 @@ def get_x(train_sample):
         grad *= -1. / N
         tmp = w
 
-        w -= 0.0003 * grad - 0.0013 * (w - w_prev)
+        w -= 0.004 * grad - 0.001 * (w - w_prev)
         #steps = steps + 1
         w_prev = tmp
         #print np.linalg.norm(grad)

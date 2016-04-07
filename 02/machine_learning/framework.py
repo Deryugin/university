@@ -38,11 +38,13 @@ for c_res in resolution_list:
     print "Image resolution: " + str(c_res) + "x" + str(c_res)
     for sz in lim_list:
         print "        Sample size: " + str(sz)
+        print "                Trainnig..."
         t_set = util.train_sample(sz)
         l = len(t_set)
         for i in range(0, l):
             t_set[i] = (t_set[i][0], util.resize(t_set[i][1], c_res))
         x   = get_x(t_set)
+        print "                Testing..."
         e_i = test_x(x, t_set)
         t_set = util.test_sample(sz)
         l = len(t_set)
