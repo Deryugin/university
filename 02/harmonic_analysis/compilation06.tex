@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+\large {
+\section*{Задача 27}
+Используем определение корреляции и то, что $x$ --- $N$-периодическая функция.\\
+$R_{xx}(j) = \sum\limits_{k=0}^{N-1} x(k) \overline{x}(k - j).$\\
+Если $j = 0$, требуемое равенство следует из того, что каждое слагаемое будет иметь вид $x(k)\overline{x}(k)$, и, само собой оно равно самому себе сопряжённому. Следовательно, это верно и для всей суммы, т.е. $R_{xx}(0) = \overline{R_{xx}}(0)$.\\
+Пусть теперь $j \new 0$.\\
+
+$\sum\limits_{k = 0}^{N - 1} x(k) \overline{x}(k - j) =$
+$\sum\limits_{l = -j}^{N - 1 - j} x(l + j) \overline{x}(l) =$
+$\sum\limits_{l = -j}^{- 1} x(l + j) \overline{x}(l) + \sum\limits_{l = 0}^{N - 1 - j} x(l + j) \overline{x}(l) = $
+$\sum\limits_{l = N - j}^{N - 1} x(l + j) \overline{x}(l) + \sum\limits_{l = 0}^{N - j - 1} x(l + j) \overline{x}(l) = $
+$\sum\limits_{l = 0}^{N - 1} \overline{x}(l) x(l + j) = $
+$\overline{\sum\limits_{l = 0}^{N - 1} x(l) \overline{x}(l + j)} = \overline{R_{xx}}(-j)$
+\proofend
+
+\section*{28}
+Пусть $x(j) = \omega_N^{aj}, y(j) = \omega_N^{bj}$. При этом $a, b \in [1 : N - 1]$.\\
+Учтём, что $\delta_N(t) = \dfrac{1}{N}\sum\limits_{q=0}^{N-1}\omega_N^{-qt}$.\\
+$R_{xy}(j) = $
+$\sum\limits_{k = 0}^{N - 1} x(k) \overline{y} (k - j) =$
+$\sum\limits_{k = 0}^{N - 1} \omega_N^{ak} \overline{\omega_N^{b(k-j)}} =$
+$\sum\limits_{k = 0}^{N - 1} \omega_N^{ak} \omega_N^{-b(k - j)} =$
+$\sum\limits_{k = 0}^{N - 1} \omega_N^{k(a - b) + bj} = $
+$\omega_N^{bj}\sum\limits_{k = 0}^{N - 1} \omega_N^{k(a - b)} = $
+$\omega_N^{bj}\dfrac{1}{N}\delta_N(a - b).$\\
+
+Учитывая то, что $a, b \in [1 : N -1]$, $(a - b) \in [N - 1 : N - 1]$, значит, $R_{xy}(j) = 0 \forall j$, если $a \neq b$.
+
+\proofend
+
+\section*{29}
+
+Пусть $x(j) = \delta_N{j - a}, y(j) = \delta_N^{j - b}$. При этом $a, b \in [1 : N - 1]$.\\
+
+$R_{xy}(j) = $
+$\sum\limits_{k = 0}^{N - 1} x(k) \overline{y} (k - j) =$
+$\sum\limits_{k = 0}^{N - 1} \delta_N(k - a) \overline{\delta_N} (b - k + j) =$
+$\delta_N(a - a) \overline{\delta_N} (b - a + j) = $
+$\delta_N (b - a + j).$\\
+Следовательно, $R_{xy}$ обращается в $1$ при $j = a + b$. То есть, функции $x$ и $y$ не являются некоррелированными.
+
+\proofend
+
+\section*{30}
+Будем использовать теорему о корреляции:\\
+$\mathcal{F}_N(R_{xy}) = X\overline{Y}$.
+
+Обозначим $a(j) = R_{xw}(j)$, $b(j) = R_{yz}(j)$.\\
+$\mathcal{F}_N(R_{ab}) =$
+$\mathcal{F}_N(R_{xw}) \overline{\mathcal{F}_N}(R_{yz}) =$
+$X\overline{W} \overline{Y\overline{Z}} = $
+$X\overline{Y} Z \overline{W} = $
+$\mathcal{F}_N(R_{xy}) Z\overline{W}.$
+
+По условию, $R_{xy}$ --- тождественный $0$. Следовательно, по определению, $\mathcal{F}_N(R_{xy}) = 0$.\\
+Значит, и $\mathcal{F}_N(R{xy} Z \overline{W}$ --- также тождественный $0$.\\
+Значит, $\mathcal{F}_N(R_{ab})(j) = 0 \forall j \in [0 : N - 1]$. По формуле обращения, $R_{ab}(j) = 0 \forall j \in [0 : N - 1]$.
+\proofend
+}
+\end{document}
