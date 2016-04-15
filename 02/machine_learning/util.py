@@ -13,9 +13,13 @@ def resize(img, new_sz):
     res = [0.0] * new_sz * new_sz
     coef = (1. * new_sz / 28) * (1. * new_sz / 28)
     t = new_sz * (28 / new_sz)
+    if 28 % new_sz > 0:
+        t += new_sz
+
     for i in range(0, t):
         for j in range(0, t):
-            res[new_sz * (i * new_sz / 28) + j * new_sz / 28] += 1. * img[i * 28 + j] * coef
+            if i * 28 + j < 28 * 28 and new_sz * (i * new_sz / 28) + j * new_sz / 28 < new_sz * new_sz:
+                res[new_sz * (i * new_sz / 28) + j * new_sz / 28] += 1. * img[i * 28 + j] * coef
     return res
 
 labels_sig_sz = 8
@@ -41,7 +45,6 @@ def get_img(n, images):
     for i in range(0, 28 * 28):
         res.append(ord(images[images_sig_sz + n * 28 * 28 + i]))
     return res
-
 
 def load_data():
     fimages = open(train_images_fname)
