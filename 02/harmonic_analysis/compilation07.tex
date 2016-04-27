@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+
+\large {
+\section*{Задача 32}
+$F(k_1 N + k_0) = $
+$W_{N^2}(f)(k_1 N + k_0) = $
+$\sum\limits_{j=0}^{N^2-1}f(j)v_{k_1 N + k_0}(j) = $
+$\sum\limits_{q=0}^{N-1}\sum\limits_{p=0}^{N-1}f(qN + p) v_{k_1 N + k_0}(qN + p) = $\\
+$= \sum\limits_{q=0}^{N-1}\sum\limits_{p=0}^{N-1}v_q(p)v_{k_1N + k_0}(qN+p)$.\\ \\
+Рассмотрим $(-1)^{\{aN + b, cN + d\}}$, где $ 0 \leq a, b < N = 2^k$.\\
+$aN mod N = 0$, значит, в двоичном представлении $k$ младших разрядов будут равны 0. В то же время, $b \;div N = 0$, а значит, значащими могут быть только $k$ младших разрядов.\\
+Таким образом, $\{aN + b, cN + d\}_{N^2} = \sum\limits_{j = 0}^{2k - 1} (aN + b)_j(cN + d)_j = \sum\limits_{j = 0}^{k-1}b_j d_j + \sum\limits_{j=0}^{k-1}(aN)_{j+k}(cN)_{j+k} = $
+$= \sum\limits_{j=0}^{k-1}b_j d_j + \sum\limits_{j=0}^{k-1}a_j c_j$.\\
+То есть, $(-1)^{\{aN + b, cN + d\}} = (-1)^{\{a, c\}}(-1)^{\{b, d\}}$.\\
+Другими словами, $v_{aN + b}(cN + d) = v_{a}(c)v_{b}(d)$.\\ \\
+Воспользуемся свойствами:
+$v_k(j \oplus l) = v_k(j)v_k(l)$;\\
+$\sum\limits_{k=0}^{N-1}v_k(j) = N\delta_N(j)$;\\
+$v_k(j) = v_j(k)$.\\ \\
+%
+%$v_{aN \oplus b}(cN \oplus d) = v_{aN}(cN)v_{aN}(d)$
+%
+%$v_{aN + b}(cN + d) = v_{aN + b}(cN)v_{aN+b}(d)$
+
+$\sum\limits_{q=0}^{N-1}\sum\limits_{p=0}^{N-1}v_q(p)v_{k_1N + k_0}(qN+p) =$
+$\sum\limits_{q=0}^{N-1}\sum\limits_{p=0}^{N-1}v_q(p)v_{k_1}(q)v_{k_0}(p) =$
+$\sum\limits_{q=0}^{N-1}v_{k_1}(q)\sum\limits_{p=0}^{N-1}v_q(p)v_{k_0}(p) =$\\
+$= \sum\limits_{q=0}^{N-1}v_{k_1}(q)\sum\limits_{p=0}^{N-1}v_p(q)v_{p}(k_0) =$
+$\sum\limits_{q=0}^{N-1}v_{k_1}(q)\sum\limits_{p=0}^{N-1}v_p(q \oplus k_0) =$
+$\sum\limits_{q=0}^{N-1}v_{k_1}(q)N\delta_N(q \oplus k_0).$\\ \\
+
+Заметим, что $q \oplus k_0 = 0 \Leftrightarrow q = k_0$, так как отличие хотя бы в одном разряде эквивалентно тому, что $\oplus$ будет ненулевым.
+
+С другой стороны, $q$ и $k_0$ лежат в интервале от $0$ до $N -1$ $\Rightarrow q \oplus k_0 < N$. Следовательно, \\
+
+$\sum\limits_{q=0}^{N-1}v_{k_1}(q)N\delta_N(q \oplus k_0) =$
+$N\sum\limits_{q=0}^{N-1}v_{k_1}(q)\delta_N(q - k_0) =$
+$Nv_{k_1}(k_0)$.
+\proofend
+
+\pagebreak
+
+\section*{Задача 33}
+По определению $rev_k(\cdot)$ и $\{ \cdot, \cdot\}_k $:\\
+$\{rev_\nu(l), k\}_\nu = \sum\limits_{j=0}^{\nu - 1} (rev_\nu(l))_j\;k_j =$
+$\sum\limits_{j=0}^{\nu - 1} l_{\nu - 1 - j}\;k_j$. \\ \\ \\
+По определению $N_k$:\\
+$\{lN_\nu, rev_s(k)\}_s = \sum\limits_{j = 0}^{s - 1} (lN_\nu)_j\;rev_s(k)_j =$
+$\sum\limits_{j = 0}^{s - 1} (l2^{s-\nu})_j\;k_{s - 1 - j} =$
+$\sum\limits_{j = s-\nu}^{s - 1} (l2^{s-\nu})_j\;k_{s - 1 - j}$.\\ \\
+Заметим, что $l2^{s - \nu} \;\; mod \;\; 2^{s - \nu} = 0$, следовательно, $s-\nu$ младших разрядов равны 0.\\Отбросим их:\\
+$\sum\limits_{j = s-\nu}^{s - 1} (l2^{s-\nu})_j\;k_{s - 1 - j}= $
+$\sum\limits_{j = 0}^{\nu - 1} l_{j}\;k_{-j - 1 + \nu} = $
+$\sum\limits_{j=0}^{\nu - 1} l_{\nu - 1 - j}\;k_j = $
+$\{rev_\nu(l), k\}_\nu$.
+\proofend
+
+\section*{Задача 34}
+
+$N = 2^s \Rightarrow \sigma N_1 = \sigma 2^{s - 1} = (\sigma, 0, ..., 0)_2$.\\
+$p < 2^{s - 1} \Rightarrow p = (0, p_{s-2}, ..., p_1, p_0)_2.$\\ \\
+$\sigma N_1 + p = (\sigma, p_{s-2}, ..., p_1, p_0)_2.$\\ \\
+$rev_s(\sigma N_1 + p) = (p_0, p_1, ..., p_{s-2}, \sigma)_2 =$
+$\sigma 2^0 + (p_0, p_{1}, ..., p_{s-2}, 0)_2 = $ \\
+$=\sigma + 2(p_0, p_1, ..., p_{s-2})_2 = \sigma + 2rev_{s-1}(p).$
+\proofend
+
+\section*{Задача 35}
+По определению, $N_\nu = 2^{s-\nu} = (N_\nu^{s - 1}, ..., N_\nu^{0})_2$, \\где $N_\nu^k = 1$, если $k = s-\nu$ и $0$ для всех остальных k. \\ \\
+$rev_s(N_\nu) = (N_\nu^{0}, ..., N_\nu^{s-1})_2 =$
+$\sum\limits_{k=0}^{s-1} N_\nu^{s - 1 - k}2^k = N_\nu^{s - \nu}2^{\nu - 1} = 2^{\nu - 1} = \Delta_\nu$. \\ \\ \\
+Обозначим $q = pN_\nu$. Заметим, что $q\;\;mod\;\;N_\nu = 0$, то есть, младшие $s - \nu$ разрядов равны 0.\\
+$rev_s(q) = rev_s (q_{s-1}, ..., q_{0})_2 =$
+$rev_s(q_{s-1},...,q_{s-\nu}, 0, ..., 0)_2 = $
+$rev_s(p_{\nu-1},...,p_1,p_0,0,...,0)_2 = $\\
+$=rev_s(0, 0, 0, ..., 0, p_0, p_1, ... p_{\nu-1})_2 =$
+$rev_\nu(p_0, p_1, ... p_{\nu-1})_2$.
+\proofend
+\pagebreak
+\section*{Задача 36}
+
+Используем теорему:\\
+$b_{r+1}(j+1) - b_{r+1}(j) = b_r(j)$.\\
+$b_r(r - j) = (-1)^rb_r(j).$\\ \\ \\
+$b_1(j) = b_0(j - 1) + b_1(j - 1)$\\
+$b_1(j) = \delta_N(j - 1) - \dfrac{1}{N} + b_1(j - 1)$\\
+$b_1(1) = \dfrac{N - 1}{N} + b_1(0)$\\
+$b_1(2) = -\dfrac{1}{N} + b_1(1) = \dfrac{N - 2}{N} + b_1(0)$\\
+...\\
+$b_1(k) = \dfrac{N - k}{N} + b_1(0), \forall k \in [0..N-1]$\\ \\
+$b_1(1 - 0) = (-1)^1b_1(0)$\\
+$b_1(1) = -b_1(0)$\\
+
+$
+\left\{\begin{matrix}
+	b_1(1) = 1 - \dfrac{1}{N} + b_1(0) \\
+	b_1(1) = -b_1(0)
+\end{matrix}\right.
+$\\ \\ \\
+
+$
+\left\{\begin{matrix}
+	2b_1(1) = \dfrac{N - 1}{N} \\
+	b_1(0) = \dfrac{1 - N}{2N}
+\end{matrix}\right.
+$ \\ \\
+
+$b_1(k) = \dfrac{N - k}{N} - \dfrac{N - 1}{2N}$\\
+$b_1(k) = \dfrac{N - 2k + 1}{2N} = \dfrac{1}{N}\Bigg ( \dfrac{N + 1}{2} - k\Bigg )$\\
+
+\proofend
+
+}
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+
+\large {
+\section*{Задача 37}
+
+Будем использовать обобщённое равенство Парсеваля:\\
+$ <x, y> = \dfrac{1}{N}<X, Y>$\\ \\ \\
+По определению, \\
+$Q_r(j - pn) = \dfrac{1}{N}\sum\limits_{k = 0}^{N-1}X_1^r(k)\omega_N^{k(j-pn)} =$
+$\dfrac{1}{N}\sum\limits_{k = 0}^{N-1}\big (X_1^r(k)\omega_N^{-kpn}\big) \omega_N^{kj} =$
+$\mathcal{F}^{-1}_N(X_1^r(\cdot) \omega_N^{-pn(\cdot)})(j)$. \\ \\ \\
+По равенству Парсеваля:\\
+$<Q_r(\cdot - pn), Q_r(\cdot - qn)> = $
+$\dfrac{1}{N} <X_1^r(\cdot) \omega_N^{-pn(\cdot)}, X_1^r(\cdot) \omega_N^{-qn(\cdot)}>= $
+$\dfrac{1}{N} \sum\limits_{k=0}^{N-1}X_1^r(k) \omega_N^{-pnk} \overline{X_1^r(k) \omega_N^{-qnk}}= $\\
+$= \dfrac{1}{N} \sum\limits_{k=0}^{N-1}X_1^{2r}(k) \omega_N^{(q -p)nk}= $
+$\dfrac{1}{N} \sum\limits_{k=0}^{N-1}X_1^{2r}(k) \omega_N^{(q - p)nk}= $
+$Q_{2r}((q-p)n)$
+
+\proofend
+
+\section*{Задача 38}
+По определению (n = 2, N = 2m),\\
+$T_r(l) = \dfrac{1}{n}\sum\limits_{q=0}^{n-1} X_1^r(qm + l) = $
+$\dfrac{1}{2}\big (X_1^r(l) + X_1^r(m + l) \big ).$\\ \\ \\
+Будем использовать формулу синуса двойного угла: $sin 2\alpha = 2 sin\alpha cos \alpha$.\\
+Обозначим $\alpha = \dfrac{\pi l}{2m}, \beta = \dfrac{\pi (l + m)}{2m}$. \\ \\
+$... = \dfrac{1}{2}\Bigg [ \Bigg (\dfrac{sin 2\alpha}{sin \alpha} \Bigg )^{2r} + \Bigg (\dfrac{sin 2\beta}{sin \beta} \Bigg )^{2r}\Bigg ] = $
+$\dfrac{1}{2}\Bigg [ \Bigg (\dfrac{2sin \alpha cos\alpha}{sin \alpha} \Bigg )^{2r} + \Bigg (\dfrac{2 sin \beta cos\beta}{sin \beta} \Bigg )^{2r}\Bigg ] = $\\
+$= \dfrac{1}{2}\Bigg [ 2^{2r} (cos\alpha )^{2r} + 2^{2r} (cos\beta)^{2r}\Bigg ] = $
+$2^{2r-1}\Bigg [ \Big (cos\dfrac{\pi l}{2m} \Big)^{2r} + \Big (cos\dfrac{\pi(l + m)}{2m} \Big )^{2r}\Bigg ] = $ \\
+$ = 2^{2r-1}\Bigg [ \Big (cos\dfrac{\pi l}{2m} \Big)^{2r} + \Big (sin\dfrac{\pi l}{2m} \Big )^{2r}\Bigg ].$
+\proofend
+
+\pagebreak
+
+\section*{Задача 39}
+
+$\overline{s}(-j) = $
+$\sum\limits_{p=0}^{m-1}\overline{c}(p)\overline{Q_r}(-j - pn) =$
+$\dfrac{1}{N}\sum\limits_{p=0}^{m-1}c(-p)\overline{\sum\limits_{b=0}^{N-1} X_1^r(b)\omega_N^{-bj}} =$
+$\dfrac{1}{N}\sum\limits_{p=0}^{m-1}c(-p)\sum\limits_{b=0}^{N-1} X_1^r(b)\omega_N^{b{j + (-pn)}} =$\\ \\
+$=\dfrac{1}{N}\sum\limits_{t=0}^{-m+1}c(t)\sum\limits_{b=0}^{N-1} X_1^r(b)\omega_N^{b{j + tn}} =$
+$\dfrac{1}{N}\sum\limits_{t=0}^{-m+1}c(t)Q_r(j + tn) =$
+$\dfrac{1}{N}\sum\limits_{t=0}^{m-1}c(t)Q_r(j + tn) =$
+$s(j)$
+
+\proofend
+
+\section*{Задача 40}
+
+$R_{xy}(q) = $
+$\sum\limits_{j=0}^{N-1} x(j) \overline{y}(j - k) =$
+$\sum\limits_{j=0}^{N-1} x(j - k) \overline{y}(j - (q + k)) = $
+$<x(\cdot - k), y(\dot - (q + k)>.$\\ \\ \\
+В частности, при $q = k' - k$:\\
+$R_{xy}(k' - k) = <x(\cdot - k), y(\dot - k')>.$\\ \\ \\
+Таким образом $R_{xy}(\cdot) = \delta_N(\cdot) \Leftrightarrow <x(\cdot - k), y(\cdot - k')> = \delta_N(k - k').$
+\proofend
+
+}
+
+\end{document}
