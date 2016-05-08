@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\proofend{\begin{flushright}$\blacksquare$\end{flushright}}
+\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
+\title{}
+\author{
+	Дерюгин Денис, студент 561-й учебной группы
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{MaxMatrixCols}{20}
+
+\large {
+\section*{Задача 42}
+По определению, \\
+$\overline{T}_r(-l) =$
+$\dfrac{1}{n}\sum\limits_{q=0}^{n-1} \overline{X_1^r}(qm - l) = $
+$\dfrac{1}{n}\sum\limits_{q=0}^{n-1} X_1^r(qm - l)$.\\ \\
+Пусть $l = km, k \in \mathbb{Z}$, тогда учитывая то, что $X_1(\cdot)$ --- $N$-периодическая функция,\\ \\
+$\overline{T}_r(-l) = $
+$\dfrac{1}{n}\sum\limits_{q=0}^{n-1} X_1^r((q - k)m) = $
+$\dfrac{1}{n}\sum\limits_{t=0}^{n-1} X_1^r((t + k)m) = $
+$T_r(l)$. \\ \\ \\
+Пусть теперь $l = km + p$, $p \neq 0$ (также учитываем $N$-периодичность $X_1(\cdot)$:\\ \\ \\
+$\overline{T}_r(-l) = $
+$\dfrac{1}{n}\sum\limits_{q=0}^{n-1} \Bigg [ \dfrac{sin\dfrac{\pi(qm - l)}{m}}{sin\dfrac{\pi(qm - l)}{N}} \Bigg ]^{2r}= $
+$\dfrac{1}{n}\sum\limits_{q=0}^{n-1} \Bigg [ \dfrac{sin\dfrac{\pi(l - qm)}{m}}{sin\dfrac{\pi(l - qm)}{N}} \Bigg ]^{2r}= $ \\ \\ \\
+$= \dfrac{1}{n}\sum\limits_{q=0}^{n-1} \Bigg [ \dfrac{sin\dfrac{\pi(l + (n - q)m)}{m}}{sin\dfrac{\pi(l + (n - q)m)}{N}} \Bigg ]^{2r}= $
+$\dfrac{1}{n}\sum\limits_{f=0}^{n-1} \Bigg [ \dfrac{sin\dfrac{\pi(l + fm)}{m}}{sin\dfrac{\pi(l + fm)}{N}} \Bigg ]^{2r}= $
+$T_r(l)$. \\ \\ \\
+Таким образом, $\overline{T}_r(-l) = T_r(l)$.
+
+\proofend
+\pagebreak
+\section*{Задача 43}
+
+$N - 1 = $
+$2^s - 1 = $
+$(1, 1, 1, ..., 1)_s$.\\ \\
+Так как все двоичные разряды равны $1$, при вычитании любого числа из $N - 1$ переноса разрядов происходить не будет (так как перенос при вычитании происходит только при вычистании 1 из 0).\\ \\
+Таким образом, $(N - 1) - j = (N - 1) \ominus j =(N - 1) \oplus j$. \\ \\ \\
+Учитывая то, что $0^2 = 0$ и $1^2 = 1$: \\ \\
+${j, N - 1 - j}_s = $
+$\sum\limits_{k=0}^{s-1} j_k (N - 1 - j)_k = $
+$\sum\limits_{k=0}^{s-1} j_k (1 - j_k) = $
+$\sum\limits_{k=0}^{s-1} j_k - j_k^2 = $
+$0$.
+\proofend
+
+\section*{Задача 44}
+$j \in 0:\dfrac{N}{2} - 1 \Rightarrow j = (0, j_{s-2}, ..., j_1, j_0)_s$.\\ \\
+$rev_s(2j) = $
+$rev_s(j_{s-2},...,j_1,j_0,0)_s = $
+$(0, j_0, j1, ..., j_{s-2})_s = $
+$\dfrac{1}{2} (j_0, j_1, ..., j_{s-2}, 0)_s = $
+$\dfrac{1}{2} rev_s(j)$.
+\proofend
+
+\section*{Задача 45}
+$\mu_k(j) = $
+$\dfrac{1}{m} \sum\limits_{p = 0}^{m-1}Q_r(j-pn)\omega_m^{kp}$. \\ \\
+В одной из предыдущих задач (39) было показано, что сигнал\\
+$s(j) = \sum\limits_{p=0}^{m-1}c(p)Q_r(j-pn)$ чётен, если чётен сигнал $c(p)$.\\ \\
+В данном случае, $c(p) = \omega_m^{kp}$.\\
+$\overline{c}(-p) = $
+$\omega_m^{ -k(-p) } = $
+$c(p)$.
+т.е. условие выполнено.\\ \\
+Значит, $\mu_k(j)$ чётен.
+
+\proofend
+\pagebreak
+
+\section*{Задача 46}
+По определению, $Q_1(j) = x_1(j)$.\\
+$\mu_0(j) = $
+$\dfrac{1}{2} \sum\limits_{p=0}{2-1} Q_1(j - 2p) \omega_m^0 =$
+$\dfrac{1}{2} \big [ Q_1(j) + Q_1(j - 2) \big ] = $
+$\dfrac{1}{2} \big [ x_1(j) + x_1(j - 2) \big ]$. \\ \\
+$\mu_0(0) = \mu_0(2) = \dfrac{1}{2} \big [ 1 + 1 \big ]$. \\
+$\mu_0(1) = \mu_0(3) = \dfrac{1}{2} \big [ 1 + 1 \big ]$. \\ \\
+Значит, $\mu_0(j) \equiv 1$. \\ \\ \\
+$\mu_1(j) = $
+$\dfrac{1}{2} \big [ Q_1(j) + Q_1(j - 2) \omega_2^{-2} \big ] = $
+$\dfrac{1}{2} \big [ Q_1(j) + Q_1(j - 2) (cos \pi + isin\pi) \big ] = $
+$\dfrac{1}{2} \big [ Q_1(j) - Q_1(j - 2) \big ].$
+\proofend
+}
+
+\end{document}
