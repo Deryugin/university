@@ -1,0 +1,48 @@
+\documentclass[20pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Задание 2 (Вариант 1)}
+\author{
+	Дерюгин Денис, студент 661-й учебной группы
+}
+%\date{\today}
+
+\begin{document}
+\large{
+\maketitle
+Будет применяться точный критерий Фишера.
+
+$X$ --- тип применяемого лекарства (1 --- препарат А, 0 --- плацебо), $Y$ --- наличие симптомов (1 --- нет симптомов, 0 --- есть).
+
+\begin{center}
+    \begin{tabular}{ | c | c | c | c |}
+        \hline
+        $X \backslash Y$ & 1 & 0 & сумма \\ \hline
+        1 & c = 6 & d = 3 & 9 \\ 
+        0 & a = 3 & b = 6 & 9 \\ \hline
+        сумма & 9 & 9 & n = 18\\ 
+        \hline
+    \end{tabular}
+\end{center}
+
+$p_0 = P\{Y = 0 | X= 0 \}, p_1 = P\{Y=0 | X=1\}$.  \\
+
+$H_0$: вероятность наличия симптомов не зависит от типа принимаемого лекарства, $p_0=p1$.
+
+$H_1$: $p_0 \neq p_1$. \\
+
+Вычислим уровень значимости $P_{a+c}^a$ --- вероятность иметь симптомы, принимая препарат A ($X=1, Y=1$). \\
+
+
+$P_{a+c}^a = \dfrac{(a+b)!(c+d)!(a+c)!(b+d)!}{a!b!c!d!n!} \approx 0.1451$. \\
+
+$0.1451 > p = 0.05$, следовательно, принимается гипотеза $H_0$, т.е. статистически значимых различий нет.
+
+}
+\end{document}

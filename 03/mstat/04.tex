@@ -1,0 +1,33 @@
+\documentclass[20pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Задание 4 (Вариант 1)}
+\author{
+	Дерюгин Денис, студент 661-й учебной группы
+}
+
+\begin{document}
+\large{
+\maketitle
+
+Наблюдение в $r$ группах, $r = 3$.
+
+Количество наблюдений $n_1 = n_2 = n_3 = 6, n = n_1 + n_2 + n_3 = 18$.
+
+Ранги: $R_i^j$ --- ранг $j$-го элемента $i$-й выборки. $i \in [1:3], j \in [1:6]$.
+
+$R_i = \sum_{j=1}^{n_i} R_i^j$ \\
+
+$\chi^2 = \dfrac{12}{n(n+1)}\sum_{i=1}^r \dfrac{S_i^2}{n_i} - 3(n + 1) \approx 9.8713$.\\
+
+$p_{val} = 0.007186.$
+
+}
+%http://r-analytics.blogspot.ru/2012/03/t.html
+\end{document}

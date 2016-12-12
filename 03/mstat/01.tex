@@ -1,0 +1,55 @@
+\documentclass[20pt]{article}
+\usepackage{anyfontsize}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[left=2cm,right=2cm,
+	    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+
+\title{Задание 1 (Вариант 1)}
+\author{
+	Дерюгин Денис, студент 661-й учебной группы
+}
+%\date{\today}
+
+\begin{document}
+\large{
+\maketitle
+$X_1$ --- измерение до рекламы, $X_2$ --- после неё.
+
+
+\begin{center}
+    \begin{tabular}{ | c | c | c | c |}
+        \hline
+        $X_1 \backslash X_2$ & да & нет & сумма \\ \hline
+        да & 5 & 0 & 5 \\ 
+        нет & 6 & 4 & 10\\ \hline
+        сумма & 11 & 4 & 15\\ 
+        \hline
+    \end{tabular}
+\end{center}
+
+$b$ и $c$ --- элементы таблицы сопряжённости, не лежащие на главной диагонали (т.е. те случаи, когда результат измерения изменился).
+
+$H_0$: маргинальные распределения всех исходов совпадают, $p_b = p_c$.
+$H_1$: $p_b \neq p_c$.
+
+
+
+Точная статистика критерия Мак-Немара: \\ \\
+$\alpha_* = 2 \sum_{i=0}^{min(0,6)}C_{0 + 6}^i \dfrac{1}{2^{0 + 6}} = 2 C^0_6 \dfrac{1}{64} = 2^{-5} = 0,03125$.\\
+
+Таким образом, $\alpha_* < \alpha = 0.05$. \\ \\
+% Статистический критерий Мак-Немара:\\$\chi^2 = \dfrac{(b-c)^2}{b+c} = 6$.\\ \\
+
+Коррекция Эдвардса:\\ $\chi^2_* = \dfrac{(|b-c|-1)^2}{b+c} = 4\dfrac{1}{6}$.\\
+
+$\chi^2_{0.05,1} \approx 6,5706 > 4\dfrac{1}{6}$
+
+Доверительный уровень вероятности $p=P\{\chi^2 > \chi^2_* = 4\dfrac{1}{6}\} \approx 0.04123$.
+
+Гипотеза $H_0$ отвергается.
+}
+%http://r-analytics.blogspot.ru/2012/11/blog-post.html
+\end{document}
